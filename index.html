@@ -48,6 +48,10 @@ window.addEventListener("message", (event) => {
         console.log("Данные получены для URL:", data.url);
         console.log("Размер данных:", data.text.length, "символов");
         
+        console.log("====================================");
+        console.log(window.lastHtml);
+        console.log("====================================");
+        
         // Здесь можно вызвать твою функцию парсинга, например:
         // myParseFunction(data.text);
     }
