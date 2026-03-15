@@ -38,7 +38,8 @@ window.addEventListener("message", (event) => {
             console.log("URL подтвержден:", url);
             event.source.postMessage({ type: "START_FETCH" }, event.origin);
         } else {
-            alert("Ошибка: Пожалуйста, перейдите на страницу студента S10.run");
+            document.body.innerHTML = "<h2 style='color:red'>Ошибка: Пожалуйста, перейдите на страницу студента S10.run в раздел Задачи</h2>";
+//            alert("Ошибка: Пожалуйста, перейдите на страницу студента S10.run");
         }
     }
 
@@ -59,7 +60,10 @@ window.addEventListener("message", (event) => {
     // Шаг В: Обработка ошибок загрузки
     if (data.type === "FETCH_ERROR") {
         console.error("Ошибка загрузки URL:", data.url, "Текст ошибки:", data.error);
-        alert("Не удалось загрузить данные: " + data.error);
+        document.body.innerHTML = "<h2 style='color:red'>Не удалось загрузить данные</h2>";
+
+        //        alert("Не удалось загрузить данные: " + data.error);
+
     }
 });
 
