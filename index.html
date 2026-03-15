@@ -14,11 +14,26 @@
 
 <script type="text/javascript">
 
+/**
+ * ФУНКЦИЯ ДЛЯ ВЫЗОВА ИЗ КОНСОЛИ ИЛИ ИНТЕРФЕЙСА ПАРСЕРА
+ * Запрашивает данные любого студента по ID
+ */
+function loadStudentById(studentId) {
+    const targetUrl = "https://s10.run/student?" + studentId + "&v2=1#/";
+    if (window.opener) {
+        console.log("Запрос данных студента:", studentId);
+        window.opener.postMessage({ type: "FETCH_SPECIFIC_URL", url: targetUrl }, "*");
+    } else {
+        alert("Связь с родительским окном потеряна!");
+    }
+}
+
+
 // 1. Сразу сообщаем букмарклету, что мы открылись
 if (window.opener) {
     window.opener.postMessage("PARSER_READY", "*");
 } else {
-    document.body.innerHTML = "<h2 style='color:red'>Запустите букмарклет на сайте S10.run!</h2>";
+    document.body.innerHTML = "<h2 style='color:red ; text-align: center ;'>Запустите букмарклет на сайте S10.run!</h2>";
 }
 
 // Глобальная переменная для хранения последнего полученного HTML
@@ -60,26 +75,13 @@ window.addEventListener("message", (event) => {
     // Шаг В: Обработка ошибок загрузки
     if (data.type === "FETCH_ERROR") {
         console.error("Ошибка загрузки URL:", data.url, "Текст ошибки:", data.error);
-        document.body.innerHTML = "<h2 style='color:red'>Не удалось загрузить данные</h2>";
+        document.body.innerHTML = "<h2 style='color:red ; text-align: center ;'>Не удалось загрузить данные</h2>";
 
         //        alert("Не удалось загрузить данные: " + data.error);
 
     }
 });
 
-/**
- * ФУНКЦИЯ ДЛЯ ВЫЗОВА ИЗ КОНСОЛИ ИЛИ ИНТЕРФЕЙСА ПАРСЕРА
- * Запрашивает данные любого студента по ID
- */
-function loadStudentById(studentId) {
-    const targetUrl = "https://s10.run/student?" + studentId + "&v2=1#/";
-    if (window.opener) {
-        console.log("Запрос данных студента:", studentId);
-        window.opener.postMessage({ type: "FETCH_SPECIFIC_URL", url: targetUrl }, "*");
-    } else {
-        alert("Связь с родительским окном потеряна!");
-    }
-}
 
 
 </script>
