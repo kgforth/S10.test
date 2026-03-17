@@ -112,7 +112,7 @@ if (window.opener) {
 // Глобальная переменная для хранения последнего полученного HTML
 window.lastHtml = "";
 
-// 2. Обработка входящих сообщений
+	// 2. Обработка входящих сообщений
 window.addEventListener("message", (event) => {
     const data = event.data;
 
@@ -126,13 +126,14 @@ window.addEventListener("message", (event) => {
         if (isValid) {
 		    showLoader(); // ВКЛЮЧАЕМ ЛОАДЕР
             console.log("URL подтвержден:", url);
-            event.source.postMessage({ type: "START_FETCH" }, event.origin);
+//            event.source.postMessage({ type: "START_FETCH" }, event.origin);
+            event.source.postMessage({ type: "FETCH_SPECIFIC_URL" }, event.origin);
+
         } else {
             document.body.innerHTML = "<h2 style='color:red ; text-align: center ;'>Ошибка: Пожалуйста, перейдите на страницу студента S10.run в раздел Задачи</h2>";
 //            alert("Ошибка: Пожалуйста, перейдите на страницу студента S10.run");
         }
     }
-
 
     // Шаг Б: Получение данных (HTML)
     if (data.type === "DATA_PAYLOAD") {
