@@ -129,7 +129,8 @@ window.addEventListener("message", (event) => {
             console.log("URL event.origin:", event.origin);
 			
 //            event.source.postMessage({ type: "START_FETCH" }, event.origin);
-            event.source.postMessage({ type: "FETCH_SPECIFIC_URL" }, event.origin);
+//            event.source.postMessage({ type: "FETCH_SPECIFIC_URL" }, event.origin);
+            event.source.postMessage({ type: "FETCH_SPECIFIC_URL" }, url);
 
         } else {
             document.body.innerHTML = "<h2 style='color:red ; text-align: center ;'>Ошибка: Пожалуйста, перейдите на страницу студента S10.run в раздел Задачи</h2>";
