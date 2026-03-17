@@ -120,7 +120,8 @@ window.addEventListener("message", (event) => {
     if (data.type === "CHECK_URL") {
         const url = data.url;
         // Проверка: содержит s10.run и слово student
-        const isValid = /s10\.run\/student/.test(url);
+//        const isValid = /s10\.run\/student/.test(url);
+        const isValid = /s10\.run/.test(url);
 
         if (isValid) {
 		    showLoader(); // ВКЛЮЧАЕМ ЛОАДЕР
@@ -131,6 +132,7 @@ window.addEventListener("message", (event) => {
 //            alert("Ошибка: Пожалуйста, перейдите на страницу студента S10.run");
         }
     }
+
 
     // Шаг Б: Получение данных (HTML)
     if (data.type === "DATA_PAYLOAD") {
