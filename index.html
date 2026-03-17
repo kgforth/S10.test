@@ -117,26 +117,18 @@ window.addEventListener("message", (event) => {
     const data = event.data;
 
     // Шаг А: Проверка URL от букмарклета (первичная)
+	
     if (data.type === "CHECK_URL") {
         const url = data.url;
-        // Проверка: содержит s10.run и слово student
-//        const isValid = /s10\.run\/student/.test(url);
-        const isValid = /s10\.run/.test(url);
-
-        if (isValid) {
-		    showLoader(); // ВКЛЮЧАЕМ ЛОАДЕР
-            console.log("URL подтвержден:", url);
-            console.log("URL event.origin:", event.origin);
-			
-//            event.source.postMessage({ type: "START_FETCH" }, event.origin);
-//            event.source.postMessage({ type: "FETCH_SPECIFIC_URL" }, event.origin);
-            event.source.postMessage({ type: "FETCH_SPECIFIC_URL" }, url);
-
+        if (/s10\.run/.test(url)) {
+            showLoader();
+            // ВАЖНО: передаем объект с типом И URL, на который нужно сделать fetch
+            event.source.postMessage({ type: "FETCH_SPECIFIC_URL", url: url }, event.origin);
         } else {
-            document.body.innerHTML = "<h2 style='color:red ; text-align: center ;'>Ошибка: Пожалуйста, перейдите на страницу студента S10.run в раздел Задачи</h2>";
-//            alert("Ошибка: Пожалуйста, перейдите на страницу студента S10.run");
+            document.body.innerHTML = "<h2 style='color:red;'>Ошибка домена</h2>";
         }
     }
+	
 
     // Шаг Б: Получение данных (HTML)
     if (data.type === "DATA_PAYLOAD") {
