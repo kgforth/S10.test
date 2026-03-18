@@ -161,7 +161,29 @@ window.addEventListener("message", (event) => {
         // myParseFunction(data.text);
 
 		a=window.lastHtml;
+
 		
+// =======================================================================================================================================================
+main_process();
+// =======================================================================================================================================================
+
+
+
+    }
+
+    // Шаг В: Обработка ошибок загрузки
+    if (data.type === "FETCH_ERROR") {
+	    hideLoader(); // ВЫКЛЮЧАЕМ ЛОАДЕР
+        console.error("Ошибка загрузки URL:", data.url, "Текст ошибки:", data.error);
+        document.body.innerHTML = "<h2 style='color:red ; text-align: center ;'>Не удалось загрузить данные</h2>";
+
+        //        alert("Не удалось загрузить данные: " + data.error);
+
+    }
+});
+
+function main_process() {
+
 //		alert(a);
 
  if ( a.includes(m1) && a.includes(m2)	) {	  
@@ -1705,22 +1727,7 @@ ind3 = "";
   
 
 
-
-
-
-
-    }
-
-    // Шаг В: Обработка ошибок загрузки
-    if (data.type === "FETCH_ERROR") {
-	    hideLoader(); // ВЫКЛЮЧАЕМ ЛОАДЕР
-        console.error("Ошибка загрузки URL:", data.url, "Текст ошибки:", data.error);
-        document.body.innerHTML = "<h2 style='color:red ; text-align: center ;'>Не удалось загрузить данные</h2>";
-
-        //        alert("Не удалось загрузить данные: " + data.error);
-
-    }
-});
+}
 
 
 
