@@ -182,6 +182,27 @@ main_process();
     }
 });
 
+
+function Valid_Student() {
+  try {
+    t=d[0].studentInfo.firstName + " " + d[0].studentInfo.lastName;
+    return t.trim();
+  } catch {
+    return "";
+  }
+}
+
+function Valid_Student_dd(dd) {
+  try {
+    t=dd[0].studentInfo.firstName + " " + dd[0].studentInfo.lastName;
+    return t.trim();
+  } catch {
+    return "";
+  }
+}
+
+	
+	
 function main_process() {
 
 //		alert(a);
@@ -218,24 +239,6 @@ function formatDate(date) {
     return `${parts[2]}.${parts[1]}.${parts[0]}`;
 }
 
-
-function Valid_Student() {
-  try {
-    t=d[0].studentInfo.firstName + " " + d[0].studentInfo.lastName;
-    return t.trim();
-  } catch {
-    return "";
-  }
-}
-
-function Valid_Student_dd(dd) {
-  try {
-    t=dd[0].studentInfo.firstName + " " + dd[0].studentInfo.lastName;
-    return t.trim();
-  } catch {
-    return "";
-  }
-}
 
 
 
