@@ -228,6 +228,18 @@ function Valid_Student() {
   }
 }
 
+function Valid_Student_dd(dd) {
+  try {
+    t=dd[0].studentInfo.firstName + " " + dd[0].studentInfo.lastName;
+    return t.trim();
+  } catch {
+    return "";
+  }
+}
+
+
+
+	
 function Valid_Trainer() {
   try {
     t=d[0].trainerInfo.firstName + " " + d[0].trainerInfo.lastName;
