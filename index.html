@@ -66,6 +66,7 @@
 var trashBtnId = "trash_btn";
 var searchId = "my_search";
 var listId = "my_suggest_list";
+var lastId = 0 ;
 
 webix.html.addStyle(`
   .trash-active { background-color: #ff4747 !important; border-color: #b33030 !important; }
@@ -85,6 +86,8 @@ function extractId() {
     webix.message({ type: "debug", text: "Извлечен ID: " + resultId });
     console.log("Найденный ID:", resultId);
     
+	lastId = resultId;
+	
     // Здесь можно вызвать дальнейшую логику с этим resultId
   } else {
     webix.message({ type: "error", text: "Формат #номер# не найден" });
@@ -212,7 +215,7 @@ function hideLoader() {
 
 function restartwebix() {
 if ($$("ini")) $$("ini").destructor();
-loadStudentById(extractId()); 
+loadStudentById(lastId); 
 }
 
 /**
