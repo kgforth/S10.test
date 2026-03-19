@@ -219,12 +219,27 @@ function restartwebix() {
 //});
 
 // Сначала уничтожаем все окна (они живут отдельно от основного лейаута)
-var views = webix.ui.views;
-for (var id in views) {
-    if (views[id] && views[id].destructor) {
-        views[id].destructor();
-    }
+//var views = webix.ui.views;
+//for (var id in views) {
+//    if (views[id] && views[id].destructor) {
+//        views[id].destructor();
+//    }
+//}
+
+// 1. Собираем все ID живых объектов в отдельный массив
+var allIds = [];
+for (var id in webix.ui.views) {
+    allIds.push(id);
 }
+
+// 2. Удаляем их по одному, проверяя существование
+allIds.forEach(function(id){
+    var view = webix.$$(id);
+    if (view && view.destructor) {
+        view.destructor();
+    }
+});
+
 
 //loadStudentById(lastId); 
 }
