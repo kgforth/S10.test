@@ -359,6 +359,131 @@ function Valid_Student_dd(dd) {
 
 
 
+
+f1 = "" ;
+
+for(var i = 0; i < 24 ; i++){
+  
+//  f1 = f1 + '{ "pace14":"' + Valid_Slot(n1+14,i,"") + '", "pace7":"' + Valid_Slot(n1+7,i,"") + '", "pace0":"' + Valid_Slot(n1,i,"") + '", "m":"' + slots[i] + '"},\n'
+
+f1 = f1 + '{ "pace14":"' ;
+if ( ind3 > 0 ) {f1 = f1 + Valid_Slot(ind3,i,"");} 
+f1 = f1 + '", "pace7":"' ;
+if ( ind2 > 0 ) {f1 = f1 + Valid_Slot(ind2,i,"");} 
+f1 = f1 + '", "pace0":"' ;
+if ( ind1 > 0 ) {f1 = f1 + Valid_Slot(ind1,i,"");} 
+f1 = f1 + '", "m":"' + slots[i] + '"},\n'
+ }
+
+f1 = "[\n" + f1.slice(0,f1.length-2) + "\n]" ;
+
+//console.log(f1);
+
+gg = JSON.parse(f1);
+// 254
+gr0 = { width:720,  height:194,  type:"clean", 
+cols:[
+        {
+          view:"chart",
+          id: "gslot",
+		  type:"line",
+          padding:{left:25,bottom: 17  },
+          preset:"plot",
+          xAxis:{
+            template:"'#m#"
+          },
+          yAxis:{
+		  },
+  legend:{layout:"x", height:-10, align:"center", valign:"middle",
+    values:[
+      {text:"", toggle:true,markerType: "item"},
+      {text:"", toggle:true,markerType: "item"},
+      {text:"" + "   km/Slot", toggle:true,markerType: "item"}
+    ]
+  }	,	  
+  scheme:{ $group: { by:"m",  map:{
+        pace14:["pace14","any"],
+        pace7:["pace7","any"],
+        pace0:["pace0","any"]
+      }
+    }
+  },  series:[
+    {  type:"spline", id:"s11", value:"#pace0#", tooltip:{css:"tpred", template:function(obj) {return obj.pace0;}}, item:{radius:3,borderColor: "#EC3774"}, line:{color:"#EC3774",width:2} },
+    {  type:"spline", id:"s12", value:"#pace7#", tooltip:{css:"tpblue",template:function(obj) {return obj.pace7;}}, item:{radius:3,borderColor: "#00ccff"}, line:{color:"#00ccff",width:2} },
+    {  type:"spline", id:"s13", value:"#pace14#", tooltip:{css:"tpyellow",template:function(obj) {return obj.pace14;}}, item:{radius:3,borderColor: "#e9df40"}, line:{color:"#e9df40",width:2} }
+
+  ],		  
+          data: gg
+        }
+
+]
+};
+
+///////////////////////
+
+
+f2 = "" ;
+ee = 10;
+
+for(var i = 0; i < ee ; i++){
+  
+//  f2 = f2 + '{ "pace15":"-' + Valid_Pace(n1+15,i,"") + '", "pace8":"-' + Valid_Pace(n1+8,i,"") + '", "pace1":"-' + Valid_Pace(n1+1,i,"") + '", "km":"' + (i+1) + '"},\n'
+
+f2 = f2 + '{ "pace15":"-' ;
+if ( ind3 > 0 ) {f2 = f2 + Valid_Pace(ind3,i,"");} 
+f2 = f2 + '", "pace8":"-' ;
+if ( ind2 > 0 ) {f2 = f2 + Valid_Pace(ind2,i,"");} 
+f2 = f2 + '", "pace1":"-' ;
+if ( ind1 > 0 ) {f2 = f2 + Valid_Pace(ind1,i,"");} 
+f2 = f2 + '", "km":"' + (i+1) + '"},\n'
+ }
+
+f2 = "[\n" + f2.slice(0,f2.length-2) + "\n]" ;
+
+//console.log(f2);
+
+gg = JSON.parse(f2);
+
+gr1 = {  width:720,  height:194,  type:"clean", 
+cols:[
+        {
+          view:"chart",
+		  id:"gpace",
+          type:"line",
+          padding:{left:25,bottom: 17  },
+          preset:"plot",
+          xAxis:{
+            template:"'#km#"
+          },
+          yAxis:{start:-7, step:1, end:-3,template: function(obj) {return Math.abs(obj);}
+		  },
+  legend:{layout:"x", height:-10, align:"center", valign:"middle",
+    values:[
+      {text:"", toggle:"s10",markerType: "item"},
+      {text:"", toggle:"s20",markerType: "item"},
+      {text:"" + "  pace/km", toggle:"s30",markerType: "item"}
+    ]
+  }	,	  
+  scheme:{ $group: { by:"km",  map:{
+        pace15:["pace15","any"],
+        pace8:["pace8","any"],
+        pace1:["pace1","any"]
+      }
+    }
+  },  series:[
+    {  type:"spline", id:"s10", value:"#pace1#", tooltip:{css:"tpred", template:function(obj) {return To_Pace(obj.pace1);}}, item:{radius:3,borderColor: "#EC3774"}, line:{color:"#EC3774",width:2} },
+    {  type:"spline", id:"s20", value:"#pace8#", tooltip:{css:"tpblue",template:function(obj) {return To_Pace(obj.pace8);}}, item:{radius:3,borderColor: "#00ccff"}, line:{color:"#00ccff",width:2} },
+    {  type:"spline", id:"s30", value:"#pace15#", tooltip:{css:"tpyellow",template:function(obj) {return To_Pace(obj.pace15);}}, item:{radius:3,borderColor: "#e9df40"}, line:{color:"#e9df40",width:2} }
+  ],		  
+          data: gg
+        }
+
+]
+};
+
+
+
+
 function main_process() {
 
 //		alert(a);
@@ -1045,128 +1170,6 @@ return mm + ":" + ss;
 // -----------------------------------------
 
 //ind1=6
-
-f1 = "" ;
-
-for(var i = 0; i < 24 ; i++){
-  
-//  f1 = f1 + '{ "pace14":"' + Valid_Slot(n1+14,i,"") + '", "pace7":"' + Valid_Slot(n1+7,i,"") + '", "pace0":"' + Valid_Slot(n1,i,"") + '", "m":"' + slots[i] + '"},\n'
-
-f1 = f1 + '{ "pace14":"' ;
-if ( ind3 > 0 ) {f1 = f1 + Valid_Slot(ind3,i,"");} 
-f1 = f1 + '", "pace7":"' ;
-if ( ind2 > 0 ) {f1 = f1 + Valid_Slot(ind2,i,"");} 
-f1 = f1 + '", "pace0":"' ;
-if ( ind1 > 0 ) {f1 = f1 + Valid_Slot(ind1,i,"");} 
-f1 = f1 + '", "m":"' + slots[i] + '"},\n'
- }
-
-f1 = "[\n" + f1.slice(0,f1.length-2) + "\n]" ;
-
-//console.log(f1);
-
-gg = JSON.parse(f1);
-// 254
-gr0 = { width:720,  height:194,  type:"clean", 
-cols:[
-        {
-          view:"chart",
-          id: "gslot",
-		  type:"line",
-          padding:{left:25,bottom: 17  },
-          preset:"plot",
-          xAxis:{
-            template:"'#m#"
-          },
-          yAxis:{
-		  },
-  legend:{layout:"x", height:-10, align:"center", valign:"middle",
-    values:[
-      {text:"", toggle:true,markerType: "item"},
-      {text:"", toggle:true,markerType: "item"},
-      {text:"" + "   km/Slot", toggle:true,markerType: "item"}
-    ]
-  }	,	  
-  scheme:{ $group: { by:"m",  map:{
-        pace14:["pace14","any"],
-        pace7:["pace7","any"],
-        pace0:["pace0","any"]
-      }
-    }
-  },  series:[
-    {  type:"spline", id:"s11", value:"#pace0#", tooltip:{css:"tpred", template:function(obj) {return obj.pace0;}}, item:{radius:3,borderColor: "#EC3774"}, line:{color:"#EC3774",width:2} },
-    {  type:"spline", id:"s12", value:"#pace7#", tooltip:{css:"tpblue",template:function(obj) {return obj.pace7;}}, item:{radius:3,borderColor: "#00ccff"}, line:{color:"#00ccff",width:2} },
-    {  type:"spline", id:"s13", value:"#pace14#", tooltip:{css:"tpyellow",template:function(obj) {return obj.pace14;}}, item:{radius:3,borderColor: "#e9df40"}, line:{color:"#e9df40",width:2} }
-
-  ],		  
-          data: gg
-        }
-
-]
-};
-
-///////////////////////
-
-
-f2 = "" ;
-ee = 10;
-
-for(var i = 0; i < ee ; i++){
-  
-//  f2 = f2 + '{ "pace15":"-' + Valid_Pace(n1+15,i,"") + '", "pace8":"-' + Valid_Pace(n1+8,i,"") + '", "pace1":"-' + Valid_Pace(n1+1,i,"") + '", "km":"' + (i+1) + '"},\n'
-
-f2 = f2 + '{ "pace15":"-' ;
-if ( ind3 > 0 ) {f2 = f2 + Valid_Pace(ind3,i,"");} 
-f2 = f2 + '", "pace8":"-' ;
-if ( ind2 > 0 ) {f2 = f2 + Valid_Pace(ind2,i,"");} 
-f2 = f2 + '", "pace1":"-' ;
-if ( ind1 > 0 ) {f2 = f2 + Valid_Pace(ind1,i,"");} 
-f2 = f2 + '", "km":"' + (i+1) + '"},\n'
- }
-
-f2 = "[\n" + f2.slice(0,f2.length-2) + "\n]" ;
-
-//console.log(f2);
-
-gg = JSON.parse(f2);
-
-gr1 = {  width:720,  height:194,  type:"clean", 
-cols:[
-        {
-          view:"chart",
-		  id:"gpace",
-          type:"line",
-          padding:{left:25,bottom: 17  },
-          preset:"plot",
-          xAxis:{
-            template:"'#km#"
-          },
-          yAxis:{start:-7, step:1, end:-3,template: function(obj) {return Math.abs(obj);}
-		  },
-  legend:{layout:"x", height:-10, align:"center", valign:"middle",
-    values:[
-      {text:"", toggle:"s10",markerType: "item"},
-      {text:"", toggle:"s20",markerType: "item"},
-      {text:"" + "  pace/km", toggle:"s30",markerType: "item"}
-    ]
-  }	,	  
-  scheme:{ $group: { by:"km",  map:{
-        pace15:["pace15","any"],
-        pace8:["pace8","any"],
-        pace1:["pace1","any"]
-      }
-    }
-  },  series:[
-    {  type:"spline", id:"s10", value:"#pace1#", tooltip:{css:"tpred", template:function(obj) {return To_Pace(obj.pace1);}}, item:{radius:3,borderColor: "#EC3774"}, line:{color:"#EC3774",width:2} },
-    {  type:"spline", id:"s20", value:"#pace8#", tooltip:{css:"tpblue",template:function(obj) {return To_Pace(obj.pace8);}}, item:{radius:3,borderColor: "#00ccff"}, line:{color:"#00ccff",width:2} },
-    {  type:"spline", id:"s30", value:"#pace15#", tooltip:{css:"tpyellow",template:function(obj) {return To_Pace(obj.pace15);}}, item:{radius:3,borderColor: "#e9df40"}, line:{color:"#e9df40",width:2} }
-  ],		  
-          data: gg
-        }
-
-]
-};
-
 
 f3 = "" ;
 
