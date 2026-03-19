@@ -252,26 +252,53 @@ function restartwebix() {
 
 
     // 1. Получаем все корневые (верхние) элементы
-    var roots = webix.ui.getViews(); 
+//    var roots = webix.ui.getViews(); 
     
     // 2. Уничтожаем их (вместе с ними умрут все вложенные элементы)
-    for (var i = roots.length - 1; i >= 0; i--) {
-        if (roots[i] && roots[i].destructor) {
-            roots[i].destructor();
-        }
-    }
+//    for (var i = roots.length - 1; i >= 0; i--) {
+//        if (roots[i] && roots[i].destructor) {
+//            roots[i].destructor();
+//        }
+//    }
 
     // 3. Добиваем "плавающие" окна и попапы, которые могли выжить
-    var all = [];
-    for (var id in webix.ui.views) all.push(id);
+//    var all = [];
+//    for (var id in webix.ui.views) all.push(id);
     
-    all.forEach(function(id) {
-        if (webix.$$(id) && webix.$$(id).destructor) {
-            webix.$$(id).destructor();
-        }
-    });
+//    all.forEach(function(id) {
+//        if (webix.$$(id) && webix.$$(id).destructor) {
+//            webix.$$(id).destructor();
+//        }
+//    });
 
-    console.log("Осталось объектов:", Object.keys(webix.ui.views).length);
+//    console.log("Осталось объектов:", Object.keys(webix.ui.views).length);
+
+
+   // В Webix все вьюхи лежат в объекте webix.ui.views
+    var views = webix.ui.views;
+    var ids = [];
+
+    // Сначала просто собираем ID, чтобы не ломать цикл при удалении
+    for (var id in views) {
+        if (views.hasOwnProperty(id)) ids.push(id);
+    }
+
+    // Удаляем объекты В ОБРАТНОМ ПОРЯДКЕ (от дочерних к родителям)
+    for (var i = ids.length - 1; i >= 0; i--) {
+        var v = webix.$$(ids[i]);
+        if (v && v.destructor) {
+            try {
+                v.destructor();
+            } catch(e) {
+                console.warn("Не удалось удалить:", ids[i]);
+            }
+        }
+    }
+    
+    // Проверка через встроенный счетчик Webix
+    var count = 0;
+    for (var id in webix.ui.views) count++;
+    console.log("Осталось живых объектов:", count);
 
 
 //loadStudentById(lastId); 
