@@ -212,13 +212,23 @@ function hideLoader() {
     overlay.style.display = 'none';
 }
 
-
+// !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 function restartwebix() {
-webix.ui.each(function(view){
-    if (view && view.destructor) view.destructor();
-});
-loadStudentById(lastId); 
+//webix.ui.each(function(view){
+//    if (view && view.destructor) view.destructor();
+//});
+
+// Сначала уничтожаем все окна (они живут отдельно от основного лейаута)
+var views = webix.ui.views;
+for (var id in views) {
+    if (views[id] && views[id].destructor) {
+        views[id].destructor();
+    }
 }
+
+//loadStudentById(lastId); 
+}
+// !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 /**
  * ФУНКЦИЯ ДЛЯ ВЫЗОВА ИЗ КОНСОЛИ ИЛИ ИНТЕРФЕЙСА ПАРСЕРА
