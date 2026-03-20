@@ -1644,10 +1644,32 @@ dtable = {
 
 
 
+let distn = ["200","1000","5000","10000","21097"];
 
 
+function updateBarData(ind1, ind2, ind3) {
+    var f1 = [];
+    
+    // Формируем данные сразу как массив объектов (не нужно мучаться со строкой и JSON.parse)
+    for(var i = 0; i < 5; i++){
+        var item = { dist: distn[i] };
+        item.sales3 = (ind3 !== "") ? eval('Valid_M' + distn[i] + '(ind3, "");') * -1 : "";
+        item.sales2 = (ind2 !== "") ? eval('Valid_M' + distn[i] + '(ind2, "");') * -1 : "";
+        item.sales  = (ind1 !== "") ? eval('Valid_M' + distn[i] + '(ind1, "");') * -1 : "";
+        f1.push(item);
+    }
 
+    var chart = $$("ddcol"); // используйте ID, который вы задали в конфиге
+    if (chart) {
+        // 1. Очищаем старые данные
+        chart.clearAll();
+        // 2. Загружаем новые. Webix заново применит 'scheme' (группировку) к ним.
+        chart.parse(f1);
+    }
 
+//console.log(f1);
+
+}
 
 var multiple_dataset = [
 	{ sales:"-3.5", sales2:"", sales3:"", dist:"200" },
@@ -1845,52 +1867,6 @@ tbl = "[\n" + tbl.slice(0,tbl.length-2) + "\n]" ;
 //console.log(tbl);
 
 
-
-  $$("ddtable").clearAll();
-  $$("ddtable").parse(tbl);
-
-//================================
-//loadData(); 
-$$(listId).parse(webix.storage.local.get("my_final_data"));
-//================================
-
-addItemEx("#" + Valid_id() + "#  " + Valid_Student() + "  Тренер: " + Valid_Trainer());
-
-
-}
-
-//---------------------------------------------------------------------------------------------------------------
-
-function updateBarData(ind1, ind2, ind3) {
-
-let distn = ["200","1000","5000","10000","21097"];
-
-    var f1 = [];
-    
-    // Формируем данные сразу как массив объектов (не нужно мучаться со строкой и JSON.parse)
-    for(var i = 0; i < 5; i++){
-        var item = { dist: distn[i] };
-        item.sales3 = (ind3 !== "") ? eval('Valid_M' + distn[i] + '(ind3, "");') * -1 : "";
-        item.sales2 = (ind2 !== "") ? eval('Valid_M' + distn[i] + '(ind2, "");') * -1 : "";
-        item.sales  = (ind1 !== "") ? eval('Valid_M' + distn[i] + '(ind1, "");') * -1 : "";
-        f1.push(item);
-    }
-
-    var chart = $$("ddcol"); // используйте ID, который вы задали в конфиге
-    if (chart) {
-        // 1. Очищаем старые данные
-        chart.clearAll();
-        // 2. Загружаем новые. Webix заново применит 'scheme' (группировку) к ним.
-        chart.parse(f1);
-    }
-
-//console.log(f1);
-
-}
-
-
-//---------------------------------------------------------------------------------------------------
-
 function updateChartData(ind1, ind2, ind3) {
     var f1 = [];
     
@@ -1916,9 +1892,6 @@ function updateChartData(ind1, ind2, ind3) {
 //console.log(f1);
 
 }
-
-
-//--------------------------------------------------------------------------------------------------------------
 
 function updateChartData2(ind1, ind2, ind3) {
     var ff2 = [];
@@ -1946,10 +1919,6 @@ function updateChartData2(ind1, ind2, ind3) {
 
 //console.log(f2);
 }
-
-
-
-//------------------------------------------------------------------------------------------------------------
 
 function updateTable1(ind1, ind2, ind3) {
 
@@ -1982,6 +1951,20 @@ tbl = "[\n" + tbl.slice(0,tbl.length-2) + "\n]" ;
 
 
  $$("ddtable").parse(tbl);
+
+}
+
+
+  $$("ddtable").clearAll();
+  $$("ddtable").parse(tbl);
+
+//================================
+//loadData(); 
+$$(listId).parse(webix.storage.local.get("my_final_data"));
+//================================
+
+addItemEx("#" + Valid_id() + "#  " + Valid_Student() + "  Тренер: " + Valid_Trainer());
+
 
 }
 
