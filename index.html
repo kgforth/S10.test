@@ -237,18 +237,18 @@ function restartwebix() {
 //}
 
 // 1. Собираем все ID живых объектов в отдельный массив
-//var allIds = [];
-//for (var id in webix.ui.views) {
-//    allIds.push(id);
-//}
+var allIds = [];
+for (var id in webix.ui.views) {
+    allIds.push(id);
+}
 
 // 2. Удаляем их по одному, проверяя существование
-//allIds.forEach(function(id){
-//    var view = webix.$$(id);
-//    if (view && view.destructor) {
-//        view.destructor();
-//    }
-//});
+allIds.forEach(function(id){
+    var view = webix.$$(id);
+    if (view && view.destructor) {
+        view.destructor();
+    }
+});
 
 
     // 1. Получаем все корневые (верхние) элементы
@@ -302,33 +302,33 @@ function restartwebix() {
 
 
     // 1. Сначала явно удаляем график, если он еще жив
-    if (webix.$$("gpace")) {
+ //   if (webix.$$("gpace")) {
         // Очищаем данные и серии перед деструктором
-        webix.$$("gpace").clearAll(); 
-        webix.$$("gpace").destructor();
-    }
+//       webix.$$("gpace").clearAll(); 
+ //       webix.$$("gpace").destructor();
+//  }
 
     // 2. Добиваем выжившие серии (s20, s30 и т.д.)
-    ["s10", "s20", "s30"].forEach(function(id) {
-        if (webix.$$(id)) webix.$$(id).destructor();
-    });
+//    ["s10", "s20", "s30"].forEach(function(id) {
+//       if (webix.$$(id)) webix.$$(id).destructor();
+//    });
 
     // 3. Тотальная зачистка ВСЕХ объектов по списку ID
-    var ids = [];
-    for (var id in webix.ui.views) ids.push(id);
+//    var ids = [];
+ //   for (var id in webix.ui.views) ids.push(id);
 
     // Удаляем жестко, игнорируя ошибки
-    ids.forEach(function(id) {
-        try {
-            if (webix.$$(id)) webix.$$(id).destructor();
-        } catch(e) {}
-    });
+ //   ids.forEach(function(id) {
+ //       try {
+//            if (webix.$$(id)) webix.$$(id).destructor();
+//        } catch(e) {}
+//    });
 
     // 4. ФИНАЛЬНЫЙ ХАК: если объекты всё еще в индексе, но не имеют DOM-узлов
     // Просто очищаем глобальный реестр Webix (только для отчаянных случаев)
-    if (Object.keys(webix.ui.views).length > 0) {
-        webix.ui.views = {}; 
-    }
+ //   if (Object.keys(webix.ui.views).length > 0) {
+ //       webix.ui.views = {}; 
+//    }
 
     console.log("Чистка завершена. Объектов:", Object.keys(webix.ui.views).length);
 
@@ -1242,11 +1242,11 @@ f2 = "[\n" + f2.slice(0,f2.length-2) + "\n]" ;
 
 gg = JSON.parse(f2);
 
-gr1 = {  width:720,  height:194,  type:"clean", 
+gr1 = {    id:"gpace", width:720,  height:194,  type:"clean", 
 cols:[
         {
           view:"chart",
-		  id:"gpace",
+		  id:"gpace0",
           type:"line",
           padding:{left:25,bottom: 17  },
           preset:"plot",
