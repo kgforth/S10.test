@@ -500,6 +500,55 @@ c2 = c2.slice(0,c2.length-2);
  
  $$("cmnt1").setHTML(c2); 
 
+ 
+
+bldate = "";
+
+for(var i = n1; i < n2 ; i++){
+if ( Valid_km(i,0) == 0 ) {
+bldate = bldate + d[0].studentTasksInfo.diaryTasks[i].date + ","
+}
+}
+
+//console.log(bldate);
+
+
+e1 = Math.max(Valid_km(n1+0,0),Valid_km(n1+7,0),Valid_km(n1+14,0));
+e2 = Math.max(Valid_km(n1+1,0),Valid_km(n1+8,0),Valid_km(n1+15,0));
+e3 = Math.max(Valid_km(n1+2,0),Valid_km(n1+9,0),Valid_km(n1+16,0));
+e4 = Math.max(Valid_km(n1+3,0),Valid_km(n1+10,0),Valid_km(n1+17,0));
+e5 = Math.max(Valid_km(n1+4,0),Valid_km(n1+11,0),Valid_km(n1+18,0));
+e6 = Math.max(Valid_km(n1+5,0),Valid_km(n1+12,0),Valid_km(n1+19,0));
+e7 = Math.max(Valid_km(n1+6,0),Valid_km(n1+13,0),Valid_km(n1+20,0));
+
+
+
+//function Valid_Pace(r,s,t) {
+//  try {
+//const tmp = [];
+//for(var i=0; i < d[0].studentTasksInfo.diaryTasks[r].tracks.length ; i++){
+// for(var j=0; j < d[0].studentTasksInfo.diaryTasks[r].tracks[i].json.segments.length ; j++){
+// tmp.push(d[0].studentTasksInfo.diaryTasks[r].tracks[i].json.segments[j].pace);
+// }
+//}
+//        return tmp[s];
+//
+//  } catch {
+//    return t;
+//  }
+//}
+//============================
+
+
+ind1 = 0;
+ind2 = 0;
+ind3 = 0;
+
+ee = 0;
+
+
+
+
 
 }
 
@@ -675,6 +724,45 @@ function Valid_C(r,t) {
 }
 
 
+function setind() {
+
+if ( $$('cal1').getValue() !== null ) {
+for(var i = n1; i < n2 ; i++){
+ if ( $$('cal1').getValue().toLocaleDateString('en-CA') == d[0].studentTasksInfo.diaryTasks[i].date ) {
+  ind1 = i;
+  }
+ }
+} else {
+ind1 = "";
+}
+
+if ( $$('cal2').getValue() !== null ) {
+for(var i = n1; i < n2 ; i++){
+ if ( $$('cal2').getValue().toLocaleDateString('en-CA') == d[0].studentTasksInfo.diaryTasks[i].date ) {
+  ind2 = i;
+  }
+ }
+} else {
+ind2 = "";
+}
+
+
+if ( $$('cal3').getValue() !== null ) {
+for(var i = n1; i < n2 ; i++){
+ if ( $$('cal3').getValue().toLocaleDateString('en-CA') == d[0].studentTasksInfo.diaryTasks[i].date ) {
+  ind3 = i;
+  }
+ }
+} else {
+ind3 = "";
+}
+
+
+
+}
+
+
+
 function main_process() {
 
 
@@ -761,42 +849,6 @@ ind3 = 0;
 
 ee = 0;
 
-function setind() {
-
-if ( $$('cal1').getValue() !== null ) {
-for(var i = n1; i < n2 ; i++){
- if ( $$('cal1').getValue().toLocaleDateString('en-CA') == d[0].studentTasksInfo.diaryTasks[i].date ) {
-  ind1 = i;
-  }
- }
-} else {
-ind1 = "";
-}
-
-if ( $$('cal2').getValue() !== null ) {
-for(var i = n1; i < n2 ; i++){
- if ( $$('cal2').getValue().toLocaleDateString('en-CA') == d[0].studentTasksInfo.diaryTasks[i].date ) {
-  ind2 = i;
-  }
- }
-} else {
-ind2 = "";
-}
-
-
-if ( $$('cal3').getValue() !== null ) {
-for(var i = n1; i < n2 ; i++){
- if ( $$('cal3').getValue().toLocaleDateString('en-CA') == d[0].studentTasksInfo.diaryTasks[i].date ) {
-  ind3 = i;
-  }
- }
-} else {
-ind3 = "";
-}
-
-
-
-}
 
 //function Set_ind() {
 //  try {
