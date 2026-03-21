@@ -763,113 +763,6 @@ ind3 = "";
 
 
 
-function main_process() {
-
-
-//document.getElementById('output').textContent = c.slice(0, 300) + "\n=================================================\n" + c.slice(-400);  
-
-//document.getElementById('student').textContent = 'student:'  + '        ' + Valid_Student();
-//document.getElementById('trainer').textContent = 'trainer:'  + '        ' + Valid_Trainer();
-//document.getElementById('ffile').textContent = 'file:'       + '        ' + fff;
-//document.getElementById('inputfile').setAttribute("type", "hidden");
-
-
-n2 = d[0].studentTasksInfo.diaryTasks.length;
-n1 = n2-21;
-
-c2 = "</br>" ;
-
-for(var i = n1; i < n2 ; i++){
-
-c0 = Valid_Comment(i,"")
-
-  c0 = c0.replace(/"/g, "'");
-  c0 = c0.replace(/(\r\n|\n|\r)/gm, ""); 
-  c0 = c0.replace(/<[^>]*>/g, '');
-  c2 = c2 + "<span style='color:blue'>--- " + d[0].studentTasksInfo.diaryTasks[i].date + " [ " + Valid_Ttype(i,"") + " ] " + Valid_Job(i,"") + "</span></br>" + c0 + "</br>\n"
-}
-
-c2 = c2.slice(0,c2.length-2);
-
-//document.getElementById('output').textContent = c2; 
-
-cmnt1= { id: "cmnt1",
-  type:"space",
-//      width:400,
-//      height: 820,
-      height: 798,
-	  scroll:"y",
-      template: c2
- };
-
-
- 
-
-bldate = "";
-
-for(var i = n1; i < n2 ; i++){
-if ( Valid_km(i,0) == 0 ) {
-bldate = bldate + d[0].studentTasksInfo.diaryTasks[i].date + ","
-}
-}
-
-//console.log(bldate);
-
-
-e1 = Math.max(Valid_km(n1+0,0),Valid_km(n1+7,0),Valid_km(n1+14,0));
-e2 = Math.max(Valid_km(n1+1,0),Valid_km(n1+8,0),Valid_km(n1+15,0));
-e3 = Math.max(Valid_km(n1+2,0),Valid_km(n1+9,0),Valid_km(n1+16,0));
-e4 = Math.max(Valid_km(n1+3,0),Valid_km(n1+10,0),Valid_km(n1+17,0));
-e5 = Math.max(Valid_km(n1+4,0),Valid_km(n1+11,0),Valid_km(n1+18,0));
-e6 = Math.max(Valid_km(n1+5,0),Valid_km(n1+12,0),Valid_km(n1+19,0));
-e7 = Math.max(Valid_km(n1+6,0),Valid_km(n1+13,0),Valid_km(n1+20,0));
-
-
-
-//function Valid_Pace(r,s,t) {
-//  try {
-//const tmp = [];
-//for(var i=0; i < d[0].studentTasksInfo.diaryTasks[r].tracks.length ; i++){
-// for(var j=0; j < d[0].studentTasksInfo.diaryTasks[r].tracks[i].json.segments.length ; j++){
-// tmp.push(d[0].studentTasksInfo.diaryTasks[r].tracks[i].json.segments[j].pace);
-// }
-//}
-//        return tmp[s];
-//
-//  } catch {
-//    return t;
-//  }
-//}
-//============================
-
-
-ind1 = 0;
-ind2 = 0;
-ind3 = 0;
-
-ee = 0;
-
-
-//function Set_ind() {
-//  try {
-
-//n2 = d[0].studentTasksInfo.diaryTasks.length;
-//n1 = n2-21;
-
-
-
-//alert(ind1);
-
-//return;
-
-//  } catch {
-//    return;
-//  }
-//}
-
-//Set_ind();
-
-
 
 function Valid_Pace(r,s,t) {
   try {
@@ -1251,6 +1144,113 @@ return mm + ":" + ss;
 }
 
 
+
+
+function main_process() {
+
+
+//document.getElementById('output').textContent = c.slice(0, 300) + "\n=================================================\n" + c.slice(-400);  
+
+//document.getElementById('student').textContent = 'student:'  + '        ' + Valid_Student();
+//document.getElementById('trainer').textContent = 'trainer:'  + '        ' + Valid_Trainer();
+//document.getElementById('ffile').textContent = 'file:'       + '        ' + fff;
+//document.getElementById('inputfile').setAttribute("type", "hidden");
+
+
+n2 = d[0].studentTasksInfo.diaryTasks.length;
+n1 = n2-21;
+
+c2 = "</br>" ;
+
+for(var i = n1; i < n2 ; i++){
+
+c0 = Valid_Comment(i,"")
+
+  c0 = c0.replace(/"/g, "'");
+  c0 = c0.replace(/(\r\n|\n|\r)/gm, ""); 
+  c0 = c0.replace(/<[^>]*>/g, '');
+  c2 = c2 + "<span style='color:blue'>--- " + d[0].studentTasksInfo.diaryTasks[i].date + " [ " + Valid_Ttype(i,"") + " ] " + Valid_Job(i,"") + "</span></br>" + c0 + "</br>\n"
+}
+
+c2 = c2.slice(0,c2.length-2);
+
+//document.getElementById('output').textContent = c2; 
+
+cmnt1= { id: "cmnt1",
+  type:"space",
+//      width:400,
+//      height: 820,
+      height: 798,
+	  scroll:"y",
+      template: c2
+ };
+
+
+ 
+
+bldate = "";
+
+for(var i = n1; i < n2 ; i++){
+if ( Valid_km(i,0) == 0 ) {
+bldate = bldate + d[0].studentTasksInfo.diaryTasks[i].date + ","
+}
+}
+
+//console.log(bldate);
+
+
+e1 = Math.max(Valid_km(n1+0,0),Valid_km(n1+7,0),Valid_km(n1+14,0));
+e2 = Math.max(Valid_km(n1+1,0),Valid_km(n1+8,0),Valid_km(n1+15,0));
+e3 = Math.max(Valid_km(n1+2,0),Valid_km(n1+9,0),Valid_km(n1+16,0));
+e4 = Math.max(Valid_km(n1+3,0),Valid_km(n1+10,0),Valid_km(n1+17,0));
+e5 = Math.max(Valid_km(n1+4,0),Valid_km(n1+11,0),Valid_km(n1+18,0));
+e6 = Math.max(Valid_km(n1+5,0),Valid_km(n1+12,0),Valid_km(n1+19,0));
+e7 = Math.max(Valid_km(n1+6,0),Valid_km(n1+13,0),Valid_km(n1+20,0));
+
+
+
+//function Valid_Pace(r,s,t) {
+//  try {
+//const tmp = [];
+//for(var i=0; i < d[0].studentTasksInfo.diaryTasks[r].tracks.length ; i++){
+// for(var j=0; j < d[0].studentTasksInfo.diaryTasks[r].tracks[i].json.segments.length ; j++){
+// tmp.push(d[0].studentTasksInfo.diaryTasks[r].tracks[i].json.segments[j].pace);
+// }
+//}
+//        return tmp[s];
+//
+//  } catch {
+//    return t;
+//  }
+//}
+//============================
+
+
+ind1 = 0;
+ind2 = 0;
+ind3 = 0;
+
+ee = 0;
+
+
+//function Set_ind() {
+//  try {
+
+//n2 = d[0].studentTasksInfo.diaryTasks.length;
+//n1 = n2-21;
+
+
+
+//alert(ind1);
+
+//return;
+
+//  } catch {
+//    return;
+//  }
+//}
+
+//Set_ind();
 
 
 
