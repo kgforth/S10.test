@@ -98,6 +98,8 @@ function extractId() {
     
 	lastId = resultId;
 	
+    restartwebix();
+	
     // Здесь можно вызвать дальнейшую логику с этим resultId
   } else {
     webix.message({ type: "error", text: "Формат #номер# не найден" });
