@@ -547,7 +547,16 @@ ind3 = 0;
 ee = 0;
 
 
+$$('cal1').setValue(new Date());
+$$('cal2').setValue(null);
+$$('cal3').setValue(null);
 
+setind();
+
+updateTable1(ind1, ind2, ind3);
+updateChartData(ind1, ind2, ind3);
+updateChartData2(ind1, ind2, ind3);
+updateBarData(ind1, ind2, ind3);
 
 
 }
