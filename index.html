@@ -594,6 +594,16 @@ function Valid_Student_dd(dd) {
 }
 
 
+function Valid_Atlet(d) {
+  try {
+    t=d[0].studentInfo.firstName + " " + d[0].studentInfo.lastName;
+    return t.trim();
+  } catch {
+    return "";
+  }
+}
+
+
 function formatDate(date) {
     // Разделяет "2023-03-15" на ["2023", "03", "15"]
     const parts = date.split('-');
@@ -2052,6 +2062,9 @@ tbl = "" ;
 //      ' C","km":"' +  d[0].studentTasksInfo.diaryTasks[ind1].kmCompleted + ' km","mhrt":"' + Valid_MaxHeart(ind1,"") +
 //	  '","dgs":"' + Valid_gs(ind1,"") + 
 //	  '"},\n'
+ 
+
+ tbl = tbl + '{ "param":"Атлет","s1":"' +  Valid_Atlet(d) + '","s2":"' +  Valid_Atlet(d) + '","s3":"' +  Valid_Atlet(d) + '"},\n';
  tbl = tbl + '{ "param":"тип тренировки","s1":"' + Valid_Ttype(ind1,"") + '","s2":"' + Valid_Ttype(ind2,"") + '","s3":"' + Valid_Ttype(ind3,"") + '"},\n';
  tbl = tbl + '{ "param":"самооценка тренировки","s1":"' + Valid_trubl(ind1,"") + '","s2":"' + Valid_trubl(ind2,"") + '","s3":"' + Valid_trubl(ind3,"") + '"},\n';
  tbl = tbl + '{ "param":"погода, С","s1":"' + Valid_C(ind1,"") + '","s2":"' + Valid_C(ind2,"") + '","s3":"' + Valid_C(ind3,"") + '"},\n';
