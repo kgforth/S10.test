@@ -1839,9 +1839,9 @@ dtable = {
 //    { id: "param", header: "Параметр", width: 250, css: "webix_header_border webix_data_border" },
     { id: "param", header: "Параметр", width: 222 },
     // Остальные столбцы — это ваши серии
-    { id: "s1", header: "<span style='color:#EC3774'><b>&nbsp;&nbsp;------o------&nbsp;&nbsp;&nbsp;&#10227;</b></span>", width: 166 },
-    { id: "s2", header: "<span style='color:#00ccff'><b>&nbsp;&nbsp;------o------&nbsp;&nbsp;&nbsp;&#10227;</b></span>", width: 168 },
-    { id: "s3", header: "<span style='color:#e9df40'><b>&nbsp;&nbsp;------o------&nbsp;&nbsp;&nbsp;&#10227;</b></span>", width: 154 }
+    { id: "s1", header: "<span title='загрузить' style='color:#EC3774'><b>&nbsp;&nbsp;------o------&nbsp;&nbsp;&nbsp;&#10227;</b></span>", width: 166 },
+    { id: "s2", header: "<span title='загрузить' style='color:#00ccff'><b>&nbsp;&nbsp;------o------&nbsp;&nbsp;&nbsp;&#10227;</b></span>", width: 168 },
+    { id: "s3", header: "<span title='загрузить' style='color:#e9df40'><b>&nbsp;&nbsp;------o------&nbsp;&nbsp;&nbsp;&#10227;</b></span>", width: 154 }
   ],
     on: {
     onHeaderClick: function(id, e, target) {
@@ -1850,12 +1850,15 @@ dtable = {
       // Если нужно выполнить действие только для конкретного столбца:
       if (id.column === "s1") {
         webix.message("Действие для столбца 's1'");
+		extractId;
       }
       if (id.column === "s2") {
         webix.message("Действие для столбца 's2'");
+		extractId;
       }
       if (id.column === "s3") {
         webix.message("Действие для столбца 's3'");
+		extractId;
       }
     }
   },
@@ -1865,7 +1868,7 @@ dtable = {
   data: raw_data
 };
 
-
+    
 var multiple_dataset = [
 	{ sales:"-3.5", sales2:"", sales3:"", dist:"200" },
 	{ sales:"-4.0", sales2:"", sales3:"", dist:"1000" },
@@ -1991,7 +1994,7 @@ webix.ui(
        },  
 	   { view:"resizer" },
        { "id":"form2%" , 
-        "rows":[ {"cols": [ btn_sync,fld_search,btn_del ]},
+        "rows":[ {"cols": [ fld_search,btn_del ]},
                  cmnt1 
 			   ]
 		}  
@@ -1999,6 +2002,8 @@ webix.ui(
 { view:"resizer" }
 ]}
 ).show();  
+
+//        "rows":[ {"cols": [ btn_sync,fld_search,btn_del ]},
 
 
 $$('cal1').setValue(new Date());
