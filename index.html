@@ -771,7 +771,7 @@ function Valid_Pace(d,r,s,t) {
 			const tmp = [];
 			for(var i=0; i < d[0].studentTasksInfo.diaryTasks[r].tracks.length ; i++){
 			for(var j=0; j < d[0].studentTasksInfo.diaryTasks[r].tracks[i].json.splits_metric.length-1 ; j++){
-			tmp.push(d[0].studentTasksInfo.diaryTasks[r].tracks[i].splits_metric.laps[j].average_speed);
+			tmp.push(d[0].studentTasksInfo.diaryTasks[r].tracks[i].json.splits_metric[j].average_speed);
 				}
 			}	  
             
