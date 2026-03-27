@@ -659,6 +659,24 @@ function Valid_C(d,r,t) {
 }
 
 
+function setind0() {
+
+k2 = d[0].studentTasksInfo.diaryTasks.length;
+k1 = k2-21;
+
+if ( $$('cal1').getValue() !== null ) {
+for(var i = k1; i < k2 ; i++){
+ if ( $$('cal1').getValue().toLocaleDateString('en-CA') == d[0].studentTasksInfo.diaryTasks[i].date ) {
+  ind1 = i;
+  }
+ }
+} else {
+ind1 = "";
+}
+
+}
+
+
 function setind() {
 
 k2 = d1[0].studentTasksInfo.diaryTasks.length;
@@ -1964,7 +1982,7 @@ $$('cal3').setValue(null);
 //$$('cal1').setValue(null);
 //$$('cal1').getValue().toLocaleDateString('en-CA');
 
-setind();
+setind0();
 
 
 updateChartData(ind1, ind2, ind3);
