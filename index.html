@@ -679,6 +679,8 @@ ind1 = "";
 
 function setind() {
 
+if (typeof d1 === 'object' && d1 !== null) {
+
 k2 = d1[0].studentTasksInfo.diaryTasks.length;
 k1 = k2-21;
 
@@ -691,6 +693,9 @@ for(var i = k1; i < k2 ; i++){
 } else {
 ind1 = "";
 }
+}
+
+if (typeof d2 === 'object' && d2 !== null) {
 
 k2 = d2[0].studentTasksInfo.diaryTasks.length;
 k1 = k2-21;
@@ -704,6 +709,9 @@ for(var i = k1; i < k2 ; i++){
 } else {
 ind2 = "";
 }
+}
+
+if (typeof d3 === 'object' && d3 !== null) {
 
 k2 = d3[0].studentTasksInfo.diaryTasks.length;
 k1 = k2-21;
@@ -718,7 +726,7 @@ for(var i = k1; i < k2 ; i++){
 ind3 = "";
 }
 
-
+}
 
 }
 
@@ -1207,7 +1215,7 @@ tbl = "" ;
  tbl = tbl + '{ "param":"Атлет","s1":"' +  Valid_Atlet(d1) + '","s2":"' +  Valid_Atlet(d2) + '","s3":"' +  Valid_Atlet(d3) + '"},\n';
  tbl = tbl + '{ "param":"тип тренировки","s1":"' + Valid_Ttype(d1,ind1,"") + '","s2":"' + Valid_Ttype(d2,ind2,"") + '","s3":"' + Valid_Ttype(d3,ind3,"") + '"},\n';
  tbl = tbl + '{ "param":"самооценка тренировки","s1":"' + Valid_trubl(d1,ind1,"") + '","s2":"' + Valid_trubl(d2,ind2,"") + '","s3":"' + Valid_trubl(d3,ind3,"") + '"},\n';
- tbl = tbl + '{ "param":"погода, С","s1":"' + Valid_C(d1,ind1,"") + '","s2":"' + Valid_C(d2,ind2,"") + '","s3":"' + Valid_C(ind3,"") + '"},\n';
+ tbl = tbl + '{ "param":"погода, С","s1":"' + Valid_C(d1,ind1,"") + '","s2":"' + Valid_C(d2,ind2,"") + '","s3":"' + Valid_C(d3,ind3,"") + '"},\n';
  tbl = tbl + '{ "param":"общая дистанция, км","s1":"' + Valid_kmm(d1,ind1,"") + '","s2":"' + Valid_kmm(d2,ind2,"") + '","s3":"' + Valid_kmm(d3,ind3,"") + '"},\n';
  tbl = tbl + '{ "param":"максимальный пульс","s1":"' + Valid_MaxHeart(d1,ind1,"") + '","s2":"' + Valid_MaxHeart(d2,ind2,"") + '","s3":"' + Valid_MaxHeart(d3,ind3,"") + '"},\n';
  tbl = tbl + '{ "param":"параметр GS","s1":"' + Valid_gs(d1,ind1,"") + '","s2":"' + Valid_gs(d2,ind2,"") + '","s3":"' + Valid_gs(d3,ind3,"") + '"},\n';
@@ -2008,13 +2016,13 @@ tbl = "" ;
 //	  '"},\n'
  
 
- tbl = tbl + '{ "param":"Атлет","s1":"' +  Valid_Atlet(d) + '","s2":"' +  Valid_Atlet(d) + '","s3":"' +  Valid_Atlet(d) + '"},\n';
- tbl = tbl + '{ "param":"тип тренировки","s1":"' + Valid_Ttype(ind1,"") + '","s2":"' + Valid_Ttype(ind2,"") + '","s3":"' + Valid_Ttype(ind3,"") + '"},\n';
- tbl = tbl + '{ "param":"самооценка тренировки","s1":"' + Valid_trubl(ind1,"") + '","s2":"' + Valid_trubl(ind2,"") + '","s3":"' + Valid_trubl(ind3,"") + '"},\n';
- tbl = tbl + '{ "param":"погода, С","s1":"' + Valid_C(ind1,"") + '","s2":"' + Valid_C(ind2,"") + '","s3":"' + Valid_C(ind3,"") + '"},\n';
- tbl = tbl + '{ "param":"общая дистанция, км","s1":"' + Valid_kmm(ind1,"") + '","s2":"' + Valid_kmm(ind2,"") + '","s3":"' + Valid_kmm(ind3,"") + '"},\n';
- tbl = tbl + '{ "param":"максимальный пульс","s1":"' + Valid_MaxHeart(ind1,"") + '","s2":"' + Valid_MaxHeart(ind2,"") + '","s3":"' + Valid_MaxHeart(ind3,"") + '"},\n';
- tbl = tbl + '{ "param":"параметр GS","s1":"' + Valid_gs(ind1,"") + '","s2":"' + Valid_gs(ind2,"") + '","s3":"' + Valid_gs(ind3,"") + '"},\n';
+ tbl = tbl + '{ "param":"Атлет","s1":"' +  Valid_Atlet(d1) + '","s2":"' +  Valid_Atlet(d2) + '","s3":"' +  Valid_Atlet(d3) + '"},\n';
+ tbl = tbl + '{ "param":"тип тренировки","s1":"' + Valid_Ttype(d1,ind1,"") + '","s2":"' + Valid_Ttype(d2,ind2,"") + '","s3":"' + Valid_Ttype(d3,ind3,"") + '"},\n';
+ tbl = tbl + '{ "param":"самооценка тренировки","s1":"' + Valid_trubl(d1,ind1,"") + '","s2":"' + Valid_trubl(d2,ind2,"") + '","s3":"' + Valid_trubl(d3,ind3,"") + '"},\n';
+ tbl = tbl + '{ "param":"погода, С","s1":"' + Valid_C(d1,ind1,"") + '","s2":"' + Valid_C(d2,ind2,"") + '","s3":"' + Valid_C(d3,ind3,"") + '"},\n';
+ tbl = tbl + '{ "param":"общая дистанция, км","s1":"' + Valid_kmm(d1,ind1,"") + '","s2":"' + Valid_kmm(d2,ind2,"") + '","s3":"' + Valid_kmm(d3,ind3,"") + '"},\n';
+ tbl = tbl + '{ "param":"максимальный пульс","s1":"' + Valid_MaxHeart(d1,ind1,"") + '","s2":"' + Valid_MaxHeart(d2,ind2,"") + '","s3":"' + Valid_MaxHeart(d3,ind3,"") + '"},\n';
+ tbl = tbl + '{ "param":"параметр GS","s1":"' + Valid_gs(d1,ind1,"") + '","s2":"' + Valid_gs(d2,ind2,"") + '","s3":"' + Valid_gs(d3,ind3,"") + '"},\n';
 
 //}
 
