@@ -1521,17 +1521,60 @@ cols:[
 
 //ind1=6
 
-f3 = "" ;
 
-for(var i = 0; i < e3 ; i++){
-  f3 = f3 + '{ "pace16":"-' + Valid_Pace(n1+16,i,"") + '", "pace9":"-' + Valid_Pace(n1+9,i,"") + '", "pace2":"-' + Valid_Pace(n1+2,i,"") + '", "km":"' + (i+1) + '"},\n'
+
+t1 = "" ;
+
+for(var i = n2-1; i > n1-1 ; i--){
+  t1 = t1 + '{ "kmCompleted":"' + d[0].studentTasksInfo.diaryTasks[i].kmCompleted + '", "id":"' + i + '", "dayd":"' + d[0].studentTasksInfo.diaryTasks[i].date.slice(-2) + '"},\n'
  }
 
-f3 = "[\n" + f3.slice(0,f3.length-2) + "\n]" ;
+t1 = "[\n" + t1.slice(0,t1.length-2) + "\n]" ;
 
-gg = JSON.parse(f3);
+gg = JSON.parse(t1);
 
-gr2 = {  width:720,  height:194,  type:"clean", 
+gra1 = {  width:720,  height:131,  type:"clean",
+cols:[
+        {
+          view:"chart",
+          type:"line",
+          value:"#kmCompleted#",  padding:{left:25,bottom: 17  },
+          preset:"plot",
+		  label: function(obj){
+			return "<span style='color:blue'><font size=1>" + parseInt(obj.kmCompleted,10) + "</font></span>";
+			} ,
+		xAxis:{
+            template:"'#dayd#"
+          },
+          yAxis:{
+          },
+  legend:{layout:"x", height:-10, align:"center", valign:"middle",
+    values:[
+      {text:"daily kmCompleted", toggle:true,markerType: "item"}
+    ]
+  }	,	  
+  series:[
+    {  type:"line",  value:"#kmCompleted#", item:{radius:2,borderColor: "#EC3774"}, line:{color:"#EC3774",width:2} }
+  ],		  
+          data: gg
+        }
+
+]
+};
+
+// -----------------------------------------
+
+t1 = "" ;
+
+for(var i = n2-1; i > n1-1 ; i--){
+  t1 = t1 + '{ "pace200":"-' + Valid_M200(i,"") + '", "pace1000":"-' + Valid_M1000(i,"") + '", "pace5000":"-' + Valid_M5000(i,"") + '", "id":"' + i + '", "dayd":"' + d[0].studentTasksInfo.diaryTasks[i].date.slice(-2) + '"},\n' 
+ }
+
+t1 = "[\n" + t1.slice(0,t1.length-2) + "\n]" ;
+
+gg = JSON.parse(t1);
+
+gra2 = {  width:720,  height:131,  type:"clean", //padding:{left:14,bottom: 17  }, radius:0,
 cols:[
         {
           view:"chart",
@@ -1539,26 +1582,26 @@ cols:[
           padding:{left:25,bottom: 17  },
           preset:"plot",
           xAxis:{
-            template:"'#km#"
+            template:"'#dayd#"
           },
           yAxis:{start:-7, step:1, end:-3,template: function(obj) {return Math.abs(obj);}},
   legend:{layout:"x", height:-10, align:"center", valign:"middle",
     values:[
-      {text:d[0].studentTasksInfo.diaryTasks[n1+2].date+"  pace/km", toggle:true,markerType: "item"},
-      {text:"-7", toggle:true,markerType: "item"},
-      {text:"-14", toggle:true,markerType: "item"}
+      {text:"pace5000", toggle:true,markerType: "item"},
+      {text:"pace1000", toggle:true,markerType: "item"},
+      {text:"pace200", toggle:true,markerType: "item"}
     ]
   }	,	  
-  scheme:{ $group: { by:"km",  map:{
-        pace16:["pace16","any"],
-        pace9:["pace9","any"],
-        pace2:["pace2","any"]
+  scheme:{ $group: { by:"dayd",  map:{
+        pace5000:["pace5000","any"],
+        pace1000:["pace1000","any"],
+        pace200:["pace200","any"]
       }
     }
   },  series:[
-    {  type:"line",  value:"#pace16#", tooltip:{css:"tpyellow",template:function(obj) {return To_Pace(obj.pace16);}}, item:{radius:3,borderColor: "#e9df40"}, line:{color:"#e9df40",width:2} },
-    {  type:"line",  value:"#pace9#", tooltip:{css:"tpblue",template:function(obj) {return To_Pace(obj.pace9);}}, item:{radius:3,borderColor: "#00ccff"}, line:{color:"#00ccff",width:2} },
-    {  type:"line",  value:"#pace2#", tooltip:{css:"tpred", template:function(obj) {return To_Pace(obj.pace2);}}, item:{radius:3,borderColor: "#EC3774"}, line:{color:"#EC3774",width:2} }
+    {  type:"line",  value:"#pace5000#", tooltip:{css:"tpyellow",template:function(obj) {return To_Pace(obj.pace5000);}}, item:{radius:3,borderColor: "#e9df40"}, line:{color:"#e9df40",width:2} },
+    {  type:"line",  value:"#pace1000#", tooltip:{css:"tpblue",template:function(obj) {return To_Pace(obj.pace1000);}}, item:{radius:3,borderColor: "#00ccff"}, line:{color:"#00ccff",width:2} },
+    {  type:"line",  value:"#pace200#", tooltip:{css:"tpred", template:function(obj) {return To_Pace(obj.pace200);}}, item:{radius:3,borderColor: "#EC3774"}, line:{color:"#EC3774",width:2} }
   ],		  
           data: gg
         }
@@ -1567,189 +1610,6 @@ cols:[
 };
 
 
-f4 = "" ;
-
-for(var i = 0; i < e4 ; i++){
-  f4 = f4 + '{ "pace17":"-' + Valid_Pace(n1+17,i,"") + '", "pace10":"-' + Valid_Pace(n1+10,i,"") + '", "pace3":"-' + Valid_Pace(n1+3,i,"") + '", "km":"' + (i+1) + '"},\n'
- }
-
-f4 = "[\n" + f4.slice(0,f4.length-2) + "\n]" ;
-
-gg = JSON.parse(f4);
-
-gr3 = {  width:720,  height:111,  type:"clean", 
-cols:[
-        {
-          view:"chart",
-          type:"line",
-          padding:{left:25,bottom: 17  },
-          preset:"plot",
-          xAxis:{
-            template:"'#km#"
-          },
-          yAxis:{start:-7, step:1, end:-3,template: function(obj) {return Math.abs(obj);}},
-  legend:{layout:"x", height:-10, align:"center", valign:"middle",
-    values:[
-      {text:"-14", toggle:true,markerType: "item"},
-      {text:"-7", toggle:true,markerType: "item"},
-      {text:d[0].studentTasksInfo.diaryTasks[n1+3].date+"  pace/km", toggle:true,markerType: "item"}
-    ]
-  }	,	  
-  scheme:{ $group: { by:"km",  map:{
-        pace17:["pace17","any"],
-        pace10:["pace10","any"],
-        pace3:["pace3","any"]
-      }
-    }
-  },  series:[
-    {  type:"line",  value:"#pace17#", tooltip:{css:"tpyellow",template:function(obj) {return To_Pace(obj.pace17);}}, item:{radius:3,borderColor: "#e9df40"}, line:{color:"#e9df40",width:2} },
-    {  type:"line",  value:"#pace10#", tooltip:{css:"tpblue",template:function(obj) {return To_Pace(obj.pace10);}}, item:{radius:3,borderColor: "#00ccff"}, line:{color:"#00ccff",width:2} },
-    {  type:"line",  value:"#pace3#", tooltip:{css:"tpred", template:function(obj) {return To_Pace(obj.pace3);}}, item:{radius:3,borderColor: "#EC3774"}, line:{color:"#EC3774",width:2} }
-  ],		  
-          data: gg
-        }
-
-]
-};
-
-f5="" ;
-
-for(var i = 0; i < e5 ; i++){
-  f5 = f5 + '{ "pace18":"-' + Valid_Pace(n1+18,i,"") + '", "pace11":"-' + Valid_Pace(n1+11,i,"") + '", "pace4":"-' + Valid_Pace(n1+4,i,"") + '", "km":"' + (i+1) + '"},\n'
- }
-
-f5 = "[\n" + f5.slice(0,f5.length-2) + "\n]" ;
-
-
-gg = JSON.parse(f5);
-
-gr4 = {  width:720,  height:111,  type:"clean", 
-cols:[
-        {
-          view:"chart",
-          type:"line",
-          padding:{left:25,bottom: 17  },
-          preset:"plot",
-          xAxis:{
-            template:"'#km#"
-          },
-          yAxis:{start:-7, step:1, end:-3,template: function(obj) {return Math.abs(obj);}},
-  legend:{layout:"x", height:-10, align:"center", valign:"middle",
-    values:[
-      {text:"-14", toggle:true,markerType: "item"},
-      {text:"-7", toggle:true,markerType: "item"},
-      {text:d[0].studentTasksInfo.diaryTasks[n1+4].date+"  pace/km", toggle:true,markerType: "item"}
-    ]
-  }	,	  
-  scheme:{ $group: { by:"km",  map:{
-        pace18:["pace18","any"],
-        pace11:["pace11","any"],
-        pace4:["pace4","any"]
-      }
-    }
-  },  series:[
-    {  type:"line",  value:"#pace18#", tooltip:{css:"tpyellow",template:function(obj) {return To_Pace(obj.pace18);}}, item:{radius:3,borderColor: "#e9df40"}, line:{color:"#e9df40",width:2} },
-    {  type:"line",  value:"#pace11#", tooltip:{css:"tpblue",template:function(obj) {return To_Pace(obj.pace11);}}, item:{radius:3,borderColor: "#00ccff"}, line:{color:"#00ccff",width:2} },
-    {  type:"line",  value:"#pace4#", tooltip:{css:"tpred", template:function(obj) {return To_Pace(obj.pace4);}}, item:{radius:3,borderColor: "#EC3774"}, line:{color:"#EC3774",width:2} }
-  ],		  
-          data: gg
-        }
-
-]
-};
-
-
-
-f6 = "" ;
-
-for(var i = 0; i < e6 ; i++){
-  f6 = f6 + '{ "pace19":"-' + Valid_Pace(n1+19,i,"") + '", "pace12":"-' + Valid_Pace(n1+12,i,"") + '", "pace5":"-' + Valid_Pace(n1+5,i,"") + '", "km":"' + (i+1) + '"},\n'
- }
-
-f6 = "[\n" + f6.slice(0,f6.length-2) + "\n]" ;
-
-gg = JSON.parse(f6);
-
-gr5 = {  width:720,  height:111,  type:"clean", 
-cols:[
-        {
-          view:"chart",
-          type:"line",
-          padding:{left:25,bottom: 17  },
-          preset:"plot",
-          xAxis:{
-            template:"'#km#"
-          },
-          yAxis:{start:-7, step:1, end:-3,template: function(obj) {return Math.abs(obj);}},
-  legend:{layout:"x", height:-10, align:"center", valign:"middle",
-    values:[
-      {text:"-14", toggle:true,markerType: "item"},
-      {text:"-7", toggle:true,markerType: "item"},
-      {text:d[0].studentTasksInfo.diaryTasks[n1+5].date+"  pace/km", toggle:true,markerType: "item"}
-    ]
-  }	,	  
-  scheme:{ $group: { by:"km",  map:{
-        pace19:["pace19","any"],
-        pace12:["pace12","any"],
-        pace5:["pace5","any"]
-      }
-    }
-  },  series:[
-    {  type:"line",  value:"#pace19#", tooltip:{css:"tpyellow",template:function(obj) {return To_Pace(obj.pace19);}}, item:{radius:3,borderColor: "#e9df40"}, line:{color:"#e9df40",width:2} },
-    {  type:"line",  value:"#pace12#", tooltip:{css:"tpblue",template:function(obj) {return To_Pace(obj.pace12);}}, item:{radius:3,borderColor: "#00ccff"}, line:{color:"#00ccff",width:2} },
-    {  type:"line",  value:"#pace5#", tooltip:{css:"tpred", template:function(obj) {return To_Pace(obj.pace5);}}, item:{radius:3,borderColor: "#EC3774"}, line:{color:"#EC3774",width:2} }
-  ],		  
-          data: gg
-        }
-
-]
-};
-
-
-f7 = "" ;
-
-for(var i = 0; i < e7 ; i++){
-  f7 = f7 + '{ "pace20":"-' + Valid_Pace(n1+20,i,"") + '", "pace13":"-' + Valid_Pace(n1+13,i,"") + '", "pace6":"-' + Valid_Pace(n1+6,i,"") + '", "km":"' + (i+1) + '"},\n'
- }
-
-f7 = "[\n" + f7.slice(0,f7.length-2) + "\n]" ;
-
-gg = JSON.parse(f7);
-
-gr6 = {  width:720,  height:111,  type:"clean", 
-cols:[
-        {
-          view:"chart",
-          type:"line",
-          padding:{left:25,bottom: 17  },
-          preset:"plot",
-          xAxis:{
-            template:"'#km#"
-          },
-          yAxis:{start:-7, step:1, end:-3,template: function(obj) {return Math.abs(obj);}},
-  legend:{layout:"x", height:-10, align:"center", valign:"middle",
-    values:[
-      {text:"-14", toggle:true,markerType: "item"},
-      {text:"-7", toggle:true,markerType: "item"},
-      {text:d[0].studentTasksInfo.diaryTasks[n1+6].date+"  pace/km", toggle:true,markerType: "item"}
-    ]
-  }	,	  
-  scheme:{ $group: { by:"km",  map:{
-        pace20:["pace20","any"],
-        pace13:["pace13","any"],
-        pace6:["pace6","any"]
-      }
-    }
-  },  series:[
-    {  type:"line",  value:"#pace20#", tooltip:{css:"tpyellow",template:function(obj) {return To_Pace(obj.pace20);}}, item:{radius:3,borderColor: "#e9df40"}, line:{color:"#e9df40",width:2} },
-    {  type:"line",  value:"#pace13#", tooltip:{css:"tpblue",template:function(obj) {return To_Pace(obj.pace13);}}, item:{radius:3,borderColor: "#00ccff"}, line:{color:"#00ccff",width:2} },
-    {  type:"line",  value:"#pace6#", tooltip:{css:"tpred", template:function(obj) {return To_Pace(obj.pace6);}}, item:{radius:3,borderColor: "#EC3774"}, line:{color:"#EC3774",width:2} }
-  ],		  
-          data: gg
-        }
-
-]
-};
 
 
 webix.i18n.setLocale("ru-RU");
