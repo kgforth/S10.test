@@ -760,6 +760,9 @@ ind3 = "";
 
 function Valid_Pace(d,r,s,t) {
   try {
+
+console.log("=1=\n");
+
 if (d[0]?.studentTasksInfo?.diaryTasks[r]?.tracks[i]?.json?.splits_metric !== undefined) {
 			const tmp = [];
 			for(var i=0; i < d[0].studentTasksInfo.diaryTasks[r].tracks.length ; i++){
@@ -772,6 +775,8 @@ if (d[0]?.studentTasksInfo?.diaryTasks[r]?.tracks[i]?.json?.splits_metric !== un
 			
             return (Math.round(num * 100) / 100) + 0.01; 
  }
+
+console.log("=2=\n");
  
 if (d[0]?.studentTasksInfo?.diaryTasks[r]?.tracks[i]?.json?.segments !== undefined) {
  
@@ -785,11 +790,17 @@ const tmp = [];
  
 } 
 
+console.log("=3=\n");
+
+
 return t;
 
   } catch {
   
       try {
+
+console.log("=4=\n");
+
 			const tmp = [];
 			for(var i=0; i < d[0].studentTasksInfo.diaryTasks[r].tracks.length ; i++){
 			for(var j=0; j < d[0].studentTasksInfo.diaryTasks[r].tracks[i].json.laps.length-1 ; j++){
@@ -805,6 +816,8 @@ return t;
            } catch {
 
 	       	return t;
+
+console.log("=5=\n");
 	
 	      }
     
@@ -1225,7 +1238,7 @@ function updateChartData2(ind1, ind2, ind3) {
         ff2.push(item);
     }
 
-//console.log(ff2);
+console.log(ff2);
 
     var chart = $$("gpace"); // используйте ID, который вы задали в конфиге
     if (chart) {
