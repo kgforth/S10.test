@@ -1200,9 +1200,9 @@ function updateChartData(ind1, ind2, ind3) {
     // Формируем данные сразу как массив объектов (не нужно мучаться со строкой и JSON.parse)
     for(var i = 0; i < 24; i++){
         var item = { m: slots[i] };
-        item.pace14 = (ind3 !== "") ? Valid_Slot(d3,ind3, i, "") : null;
-        item.pace7  = (ind2 !== "") ? Valid_Slot(d2,ind2, i, "") : null;
-        item.pace0  = (ind1 !== "") ? Valid_Slot(d1,ind1, i, "") : null;
+        item.pace14 = (ind3 !== "") ? Valid_Slot(d3,ind3, i, null) : null;
+        item.pace7  = (ind2 !== "") ? Valid_Slot(d2,ind2, i, null) : null;
+        item.pace0  = (ind1 !== "") ? Valid_Slot(d1,ind1, i, null) : null;
         f1.push(item);
     }
 
