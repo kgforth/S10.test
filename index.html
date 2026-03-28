@@ -760,10 +760,6 @@ ind3 = "";
 
 function Valid_Pace(d,r,s,t) {
   try {
-
-console.log("=1=\n");
-
-if (d[0]?.studentTasksInfo?.diaryTasks[r]?.tracks[i]?.json?.splits_metric !== undefined) {
 			const tmp = [];
 			for(var i=0; i < d[0].studentTasksInfo.diaryTasks[r].tracks.length ; i++){
 			for(var j=0; j < d[0].studentTasksInfo.diaryTasks[r].tracks[i].json.splits_metric.length-1 ; j++){
@@ -774,11 +770,15 @@ if (d[0]?.studentTasksInfo?.diaryTasks[r]?.tracks[i]?.json?.splits_metric !== un
             num=(1000/tmp[s])/60;			
 			
             return (Math.round(num * 100) / 100) + 0.01; 
- }
 
-console.log("=2=\n");
+
+
+  } catch {
+  
+      try {
+
  
-if (d[0]?.studentTasksInfo?.diaryTasks[r]?.tracks[i]?.json?.segments !== undefined) {
+
  
 const tmp = [];
  for(var i=0; i < d[0].studentTasksInfo.diaryTasks[r].tracks.length ; i++){
@@ -788,18 +788,14 @@ const tmp = [];
 }
         return tmp[s];
  
-} 
-
-console.log("=3=\n");
-
-
-return t;
 
   } catch {
-  
-      try {
 
-console.log("=4=\n");
+
+
+
+
+      try {
 
 			const tmp = [];
 			for(var i=0; i < d[0].studentTasksInfo.diaryTasks[r].tracks.length ; i++){
@@ -817,11 +813,11 @@ console.log("=4=\n");
 
 	       	return t;
 
-console.log("=5=\n");
 	
 	      }
     
 	return t;
+  }  
   }
 }
 
