@@ -1228,7 +1228,7 @@ function updateChartData2(ind1, ind2, ind3) {
     // Формируем данные сразу как массив объектов (не нужно мучаться со строкой и JSON.parse)
     for(var i = 0; i < ee; i++){
         var item = { km: (i+1) };
-        item.pace15 = (ind3 !== "") ? Valid_Pace(d3,ind3, i, "") * -1 : null;
+        item.pace15 = (ind3 !== "") ? Valid_Pace(d3,ind3, i, null) * -1 : null;
         item.pace8  = (ind2 !== "") ? Valid_Pace(d2,ind2, i, "") * -1 : null;
         item.pace1  = (ind1 !== "") ? Valid_Pace(d1,ind1, i, "") * -1 : null;
         ff2.push(item);
