@@ -1229,8 +1229,8 @@ function updateChartData2(ind1, ind2, ind3) {
     for(var i = 0; i < ee; i++){
         var item = { km: (i+1) };
         item.pace15 = (ind3 !== "") ? Valid_Pace(d3,ind3, i, null)  : null;
-        item.pace8  = (ind2 !== "") ? Valid_Pace(d2,ind2, i, "")  : null;
-        item.pace1  = (ind1 !== "") ? Valid_Pace(d1,ind1, i, "")  : null;
+        item.pace8  = (ind2 !== "") ? Valid_Pace(d2,ind2, i, null)  : null;
+        item.pace1  = (ind1 !== "") ? Valid_Pace(d1,ind1, i, null)  : null;
         ff2.push(item);
     }
 
