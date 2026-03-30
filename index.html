@@ -1559,7 +1559,45 @@ cols:[
   }	,	  
   series:[
     {  type:"spline",  value:"#kmCompleted#", item:{radius:1,borderColor: "#EC3774"}, line:{color:"#EC3774",width:2} }
-  ],		  
+  ],
+
+
+on: {
+    onAfterRender: function() {
+        var ctx = this.getCanvas();
+        // Теперь ищем по подстроке или двум последним символам
+        var targetDay = "15"; 
+        
+        var data = this.data.serialize();
+        
+        // Ищем объект, у которого поле date заканчивается на "15" 
+        // или просто равно "15"
+        var index = data.findIndex(obj => {
+            // Приводим к строке на всякий случай и берем последние 2 символа
+            var dateStr = String(obj.date);
+            return dateStr.slice(-2) === targetDay;
+        });
+
+        if (index !== -1) {
+
+            var baseX = this._getItemX(index); // центральная координата X
+            var yStart = 10;  // небольшой отступ сверху
+            var yEnd = this.$height - 20; // отступ снизу (чтобы не заходить на подписи оси)
+			
+			
+              
+            // Пример отрисовки одной линии для краткости:
+            ctx.save();
+            ctx.setLineDash([5, 5]); // Пунктир 5px через 5px
+            ctx.strokeStyle = "#FF5722";
+            ctx.beginPath();
+            ctx.moveTo(baseX, 0);
+            ctx.lineTo(baseX, this.$height);
+            ctx.stroke();
+            ctx.restore();
+        }
+    }
+}  ,  
           data: gg
         }
 
