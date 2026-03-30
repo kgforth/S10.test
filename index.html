@@ -1598,19 +1598,26 @@ on: {
 
 //            var baseX = this._getItemX(index); // центральная координата X
 
-        /* --- РАСЧЕТ КООРДИНАТЫ X ВРУЧНУЮ --- */
-        // Находим границы отрисовки внутри компонента
-        var width = this.$width;
-        var padding = this.config.padding || 50; // Стандартный отступ Webix Chart
-        
-        // В линейном графике X зависит от индекса и общего кол-ва точек
-        // Формула: Отступ слева + (Индекс * Доступная ширина / (Кол-во точек - 1))
-        var chartWidth = width - (padding * 2);
-        var x = padding + (index * chartWidth / (data.length - 1));			
-			
+		
             var yStart = 10;  // небольшой отступ сверху
             var yEnd = this.$height - 20; // отступ снизу (чтобы не заходить на подписи оси)
-			
+
+        // 1. Берем чистую ширину контейнера
+        var totalWidth = this.$width;
+        
+        // 2. Определяем отступы (padding). 
+        // Если в конфиге чарта вы их не меняли, Webix по умолчанию ставит 50.
+        var pLeft = 50; 
+        var pRight = 50;
+        
+        // 3. Вычисляем шаг между точками
+        // (Ширина - отступы) / (21 точка - 1 промежуток)
+        var step = (totalWidth - pLeft - pRight) / (20);
+        
+        // 4. Итоговая координата X
+        var x = pLeft + (index * step);
+
+        console.log("Index:", index, "Final X:", x);			
 			
               
             // Пример отрисовки одной линии для краткости:
@@ -1622,9 +1629,7 @@ on: {
             ctx.lineTo(x, yEnd);
             ctx.stroke();
             ctx.restore();
-			
-        console.log("Линия отрисована по расчетной координате X:", x);
-		
+					
         }
 	}, this, [], 100); 
     }
