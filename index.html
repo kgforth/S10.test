@@ -1534,7 +1534,7 @@ t1 = "[\n" + t1.slice(0,t1.length-2) + "\n]" ;
 gg = JSON.parse(t1);
 
 //gra1 = {  width:720,  height:201,  type:"clean",
-gra1 = {  height:221,  type:"clean",
+gra1 = {  height:201,  type:"clean",
 cols:[
         {
           view:"chart",
@@ -1542,9 +1542,9 @@ cols:[
           type:"line",
           value:"#kmCompleted#",  padding:{left:25,bottom: 17  },
           preset:"plot" ,
-		  label: function(obj){
-			return "<span style='color:blue'><font size=1>" + parseInt(obj.kmCompleted,10) + "</font></span>";
-			} ,
+//		  label: function(obj){
+//			return "<span style='color:blue'><font size=1>" + parseInt(obj.kmCompleted,10) + "</font></span>";
+//			} ,
 		xAxis:{
             template:"'#dayd#"
           },
