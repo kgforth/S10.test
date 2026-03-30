@@ -1608,7 +1608,7 @@ on: {
         // 2. Определяем отступы (padding). 
         // Если в конфиге чарта вы их не меняли, Webix по умолчанию ставит 50.
 //        var pLeft = 50; 
-        var pLeft = 35; 
+        var pLeft = 37; 
         var pRight = 50;
         
         // 3. Вычисляем шаг между точками
@@ -1616,7 +1616,9 @@ on: {
         var step = (totalWidth - pLeft - pRight) / (20);
         
         // 4. Итоговая координата X
-        var x = pLeft + (index * step);
+//        var x = pLeft + (index * step);
+
+var x = Math.floor(pLeft + (index * step)) + 0.5;
 
         console.log("Index:", index, "Final X:", x);			
 			
