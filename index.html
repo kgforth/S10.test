@@ -1564,7 +1564,14 @@ cols:[
 
 on: {
     onAfterRender: function() {
-        var ctx = this.getCanvas();
+        
+        // 1. Находим элемент canvas внутри компонента
+        var canvas = this.$view.querySelector("canvas");
+        if (!canvas) return;
+
+        // 2. Получаем 2D контекст
+        var ctx = canvas.getContext("2d");
+
         // Теперь ищем по подстроке или двум последним символам
         var targetDay = "15"; 
         
@@ -1572,11 +1579,20 @@ on: {
         
         // Ищем объект, у которого поле date заканчивается на "15" 
         // или просто равно "15"
-        var index = data.findIndex(obj => {
+//        var index = data.findIndex(obj => {
             // Приводим к строке на всякий случай и берем последние 2 символа
-            var dateStr = String(obj.date);
-            return dateStr.slice(-2) === targetDay;
-        });
+//            var dateStr = String(obj.date);
+//            return dateStr.slice(-2) === targetDay;
+//        });
+
+        // Поиск индекса (как мы обсуждали ранее)
+        var index = data.findIndex(obj => String(obj.date).slice(-2) === targetDay);
+
+        if (index !== -1) {
+            // Используем внутренний метод для получения X
+            // Важно: передаем индекс точки
+            var baseX = this._getItemX(index); 
+
 
         if (index !== -1) {
 
