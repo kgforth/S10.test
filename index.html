@@ -1533,6 +1533,8 @@ t1 = "[\n" + t1.slice(0,t1.length-2) + "\n]" ;
 
 gg = JSON.parse(t1);
 
+console.log(gg);
+
 //gra1 = {  width:720,  height:201,  type:"clean",
 gra1 = {  height:201,  type:"clean",
 cols:[
@@ -1556,7 +1558,7 @@ cols:[
     ]
   }	,	  
   series:[
-    {  type:"spline",  value:"#kmCompleted#", item:{radius:2,borderColor: "#EC3774"}, line:{color:"#EC3774",width:2} }
+    {  type:"spline",  value:"#kmCompleted#", item:{radius:1,borderColor: "#EC3774"}, line:{color:"#EC3774",width:2} }
   ],		  
           data: gg
         }
