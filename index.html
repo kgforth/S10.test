@@ -1586,8 +1586,8 @@ on: {
 //        });
 
         // Поиск индекса (как мы обсуждали ранее)
-        var index = data.findIndex(obj => String(obj.date).slice(-2) === targetDay);
-
+//        var index = data.findIndex(obj => String(obj.date).slice(-2) === targetDay);
+      var index = data.findIndex(obj => obj.dayd === targetDay);
         if (index !== -1) {
             // Используем внутренний метод для получения X
             // Важно: передаем индекс точки
