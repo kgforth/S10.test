@@ -1593,9 +1593,6 @@ on: {
             // Важно: передаем индекс точки
             var baseX = this._getItemX(index); 
 
-
-        if (index !== -1) {
-
             var baseX = this._getItemX(index); // центральная координата X
             var yStart = 10;  // небольшой отступ сверху
             var yEnd = this.$height - 20; // отступ снизу (чтобы не заходить на подписи оси)
@@ -1612,7 +1609,6 @@ on: {
             ctx.stroke();
             ctx.restore();
         }
-	  }	
     }
 }  ,  
           data: gg
