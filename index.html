@@ -1576,8 +1576,13 @@ on: {
         var ctx = canvas.getContext("2d");
 
         // Теперь ищем по подстроке или двум последним символам
-        var targetDay = "20"; 
-        
+
+//        var targetDay = "20"; 
+
+// $$('cal1').getValue().toLocaleDateString('en-CA').slice(-2)
+
+		var targetDay = $$('cal1').getValue().toLocaleDateString('en-CA').slice(-2); 
+ 
         var data = this.data.serialize();
         
         // Ищем объект, у которого поле date заканчивается на "15" 
