@@ -1588,12 +1588,23 @@ on: {
         // Поиск индекса (как мы обсуждали ранее)
 //        var index = data.findIndex(obj => String(obj.date).slice(-2) === targetDay);
       var index = data.findIndex(obj => obj.dayd === targetDay);
+
         if (index !== -1) {
             // Используем внутренний метод для получения X
             // Важно: передаем индекс точки
-            var baseX = this._getItemX(index); 
 
-            var baseX = this._getItemX(index); // центральная координата X
+//            var baseX = this._getItemX(index); // центральная координата X
+
+        /* --- РАСЧЕТ КООРДИНАТЫ X ВРУЧНУЮ --- */
+        // Находим границы отрисовки внутри компонента
+        var width = this.$width;
+        var padding = this.config.padding || 50; // Стандартный отступ Webix Chart
+        
+        // В линейном графике X зависит от индекса и общего кол-ва точек
+        // Формула: Отступ слева + (Индекс * Доступная ширина / (Кол-во точек - 1))
+        var chartWidth = width - (padding * 2);
+        var x = padding + (index * chartWidth / (data.length - 1));			
+			
             var yStart = 10;  // небольшой отступ сверху
             var yEnd = this.$height - 20; // отступ снизу (чтобы не заходить на подписи оси)
 			
