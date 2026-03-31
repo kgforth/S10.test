@@ -215,6 +215,8 @@ var m1 = "mountPage('studentTasks',";
 var m2 = "<!-- Meta Pixel Code -->" ;
 var m3 = '"trainingsRequests":';	
 
+var tgra1;
+
 var f ;
 
 const loader = document.getElementById('loader');
@@ -1282,6 +1284,14 @@ tbl = "[\n" + tbl.slice(0,tbl.length-2) + "\n]" ;
 }
 
 
+function updategra1() {
+
+ $$("gra1").parse(tgra1);
+ 
+}
+
+
+
 function main_process() {
 
 
@@ -1530,6 +1540,8 @@ for(var i = n2-1; i > n1-1 ; i--){
  }
 
 t1 = "[\n" + t1.slice(0,t1.length-2) + "\n]" ;
+
+tgra1 = t1;
 
 gg = JSON.parse(t1);
 
@@ -2070,7 +2082,7 @@ updateTable1(ind1, ind2, ind3);
 updateChartData(ind1, ind2, ind3);
 updateChartData2(ind1, ind2, ind3);
 updateBarData(ind1, ind2, ind3);
-$$('gra1').refresh;
+updategra1();
 
 return;
 }
@@ -2089,7 +2101,7 @@ updateTable1(ind1, ind2, ind3);
 updateChartData(ind1, ind2, ind3);
 updateChartData2(ind1, ind2, ind3);
 updateBarData(ind1, ind2, ind3);
-$$('gra1').refresh;
+updategra1();
 } else {
 ind1 = "";
 }
