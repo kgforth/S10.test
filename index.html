@@ -1304,7 +1304,7 @@ function updategra1(ind1,ind2,ind3) {
 console.log("updgra1:\n");
 console.log(ind10,ind20,ind30);
 
-n2 = d[0].studentTasksInfo.diaryTasks.length;
+n2 = d1[0].studentTasksInfo.diaryTasks.length;
 n1 = n2-21;
 
 t1 = "" ;
@@ -1313,15 +1313,14 @@ if (ind1 !== "") {
 
 //for(var i = n2-1; i > n1-1 ; i--){
 for(var i = ind10 + 20; i > ind10-1 ; i--){
-
-  t1 = t1 + '{ "kmCompleted":"' + d[0].studentTasksInfo.diaryTasks[i].kmCompleted + '", "id":"' + i + '", "dayd":"' + d[0].studentTasksInfo.diaryTasks[i].date.slice(-2) + '"},\n'
+  t1 = t1 + '{ "kmCompleted":"' + d1[0].studentTasksInfo.diaryTasks[i].kmCompleted + '", "id":"' + i + '", "dayd":"' + d1[0].studentTasksInfo.diaryTasks[i].date.slice(-2) + '"},\n'
  }
 t1 = "[\n" + t1.slice(0,t1.length-2) + "\n]" ;
 
 } else {
 
 for(var i = n2-1; i > n1-1 ; i--){
-  t1 = t1 + '{ "kmCompleted":null, "id":"' + i + '", "dayd":"' + d[0].studentTasksInfo.diaryTasks[i].date.slice(-2) + '"},\n'
+  t1 = t1 + '{ "kmCompleted":null, "id":"' + i + '", "dayd":"' + d1[0].studentTasksInfo.diaryTasks[i].date.slice(-2) + '"},\n'
  }
 t1 = "[\n" + t1.slice(0,t1.length-2) + "\n]" ;
 
