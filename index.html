@@ -1284,9 +1284,27 @@ tbl = "[\n" + tbl.slice(0,tbl.length-2) + "\n]" ;
 }
 
 
-function updategra1() {
+function updategra1(ind1,ind2,ind3) {
 
- $$("gra1").parse(tgra1);
+t1 = "" ;
+
+if (ind1 !== "") {
+
+for(var i = n2-1; i > n1-1 ; i--){
+  t1 = t1 + '{ "kmCompleted":"' + d[0].studentTasksInfo.diaryTasks[i].kmCompleted + '", "id":"' + i + '", "dayd":"' + d[0].studentTasksInfo.diaryTasks[i].date.slice(-2) + '"},\n'
+ }
+t1 = "[\n" + t1.slice(0,t1.length-2) + "\n]" ;
+
+} else {
+
+for(var i = n2-1; i > n1-1 ; i--){
+  t1 = t1 + '{ "kmCompleted":null, "id":null, "dayd":null, \n'
+ }
+t1 = "[\n" + t1.slice(0,t1.length-2) + "\n]" ;
+
+}
+
+ $$("gra1").parse(t1);
  
 }
 
@@ -2082,7 +2100,7 @@ updateTable1(ind1, ind2, ind3);
 updateChartData(ind1, ind2, ind3);
 updateChartData2(ind1, ind2, ind3);
 updateBarData(ind1, ind2, ind3);
-updategra1();
+updategra1(ind1,ind2,ind3);
 
 return;
 }
@@ -2101,7 +2119,7 @@ updateTable1(ind1, ind2, ind3);
 updateChartData(ind1, ind2, ind3);
 updateChartData2(ind1, ind2, ind3);
 updateBarData(ind1, ind2, ind3);
-updategra1();
+updategra1(ind1,ind2,ind3);
 } else {
 ind1 = "";
 }
