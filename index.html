@@ -775,6 +775,60 @@ ind3 = "";
 
 
 
+function setind10() {
+
+if (typeof d1 === 'object' && d1 !== null) {
+
+k2 = d1[0].studentTasksInfo.diaryTasks.length;
+k1 = k2-21;
+
+if ( $$('cal1').getValue() !== null ) {
+for(var i = k1; i < k2 ; i++){
+ if ( new Date().toLocaleDateString('en-CA') == d1[0].studentTasksInfo.diaryTasks[i].date ) {
+  ind10 = i;
+  }
+ }
+} else {
+ind1 = "";
+}
+}
+
+if (typeof d2 === 'object' && d2 !== null) {
+
+k2 = d2[0].studentTasksInfo.diaryTasks.length;
+k1 = k2-21;
+
+if ( $$('cal2').getValue() !== null ) {
+for(var i = k1; i < k2 ; i++){
+ if ( new Date().toLocaleDateString('en-CA') == d2[0].studentTasksInfo.diaryTasks[i].date ) {
+  ind20 = i;
+  }
+ }
+} else {
+ind2 = "";
+}
+}
+
+if (typeof d3 === 'object' && d3 !== null) {
+
+k2 = d3[0].studentTasksInfo.diaryTasks.length;
+k1 = k2-21;
+
+if ( $$('cal3').getValue() !== null ) {
+for(var i = k1; i < k2 ; i++){
+ if ( new Date().toLocaleDateString('en-CA') == d3[0].studentTasksInfo.diaryTasks[i].date ) {
+  ind30 = i;
+  }
+ }
+} else {
+ind3 = "";
+}
+
+}
+
+}
+
+
 function Valid_Pace(d,r,s,t) {
   try {
 			const tmp = [];
@@ -1301,9 +1355,7 @@ tbl = "[\n" + tbl.slice(0,tbl.length-2) + "\n]" ;
 
 function updategra1(ind1,ind2,ind3) {
 
-setind();
-
-ind10 = ind1;
+setind10();
 
 console.log("updgra1:\n");
 console.log(ind10,ind20,ind30);
@@ -1315,8 +1367,8 @@ t1 = "" ;
 
 if (ind1 !== "") {
 
-for(var i = n2-1; i > n1-1 ; i--){
-//for(var i = ind10 + 20; i > ind10-1 ; i--){
+//for(var i = n2-1; i > n1-1 ; i--){
+for(var i = ind10 + 20; i > ind10-1 ; i--){
   t1 = t1 + '{ "kmCompleted":"' + d1[0].studentTasksInfo.diaryTasks[i].kmCompleted + '", "id":"' + i + '", "dayd":"' + d1[0].studentTasksInfo.diaryTasks[i].date.slice(-2) + '"},\n'
  }
 t1 = "[\n" + t1.slice(0,t1.length-2) + "\n]" ;
