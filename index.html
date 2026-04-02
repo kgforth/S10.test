@@ -1369,7 +1369,7 @@ if (ind1 !== "") {
 
 //for(var i = n2-1; i > n1-1 ; i--){
 for(var i = ind10 + 20; i > ind10-1 ; i--){
-  t1 = t1 + '{ "kmCompleted":"' + d1[0].studentTasksInfo.diaryTasks[i].kmCompleted + '", "id":"' + i + '", "dayd":"' + d1[0].studentTasksInfo.diaryTasks[i].date.slice(-2) + '"},\n'
+  t1 = t1 + '{ "Атлет1":"' + d1[0].studentTasksInfo.diaryTasks[i].kmCompleted + '", "id":"' + i + '", "dayd":"' + d1[0].studentTasksInfo.diaryTasks[i].date.slice(-2) + '"},\n'
  }
 t1 = "[\n" + t1.slice(0,t1.length-2) + "\n]" ;
 
@@ -1379,7 +1379,7 @@ t1 = "[\n" + t1.slice(0,t1.length-2) + "\n]" ;
 //for(var i = ind10 + 20; i > ind10-1 ; i--){
 for(var i = 20; i >= 0 ; i--){
 //  t1 = t1 + '{ "kmCompleted":null, "id":"' + i + '", "dayd":"' + d1[0].studentTasksInfo.diaryTasks[i].date.slice(-2) + '"},\n'
-  t1 = t1 + '{ "kmCompleted":null, "id":"' + (i+ind10) + '", "dayd":"' + new Date(Date.now() - i * 24 * 60 * 60 * 1000).toLocaleDateString('en-CA').slice(-2) + '"},\n'
+  t1 = t1 + '{ "Атлет1":null, "id":"' + (i+ind10) + '", "dayd":"' + new Date(Date.now() - i * 24 * 60 * 60 * 1000).toLocaleDateString('en-CA').slice(-2) + '"},\n'
  }
 t1 = "[\n" + t1.slice(0,t1.length-2) + "\n]" ;
 
@@ -1642,7 +1642,7 @@ cols:[
 t1 = "" ;
 
 for(var i = n2-1; i > n1-1 ; i--){
-  t1 = t1 + '{ "A1":"' + d[0].studentTasksInfo.diaryTasks[i].kmCompleted + '", "id":"' + i + '", "dayd":"' + d[0].studentTasksInfo.diaryTasks[i].date.slice(-2) + '"},\n'
+  t1 = t1 + '{ "Атлет1":"' + d[0].studentTasksInfo.diaryTasks[i].kmCompleted + '", "id":"' + i + '", "dayd":"' + d[0].studentTasksInfo.diaryTasks[i].date.slice(-2) + '"},\n'
  }
 
 t1 = "[\n" + t1.slice(0,t1.length-2) + "\n]" ;
@@ -1673,25 +1673,25 @@ cols:[
   legend:{layout:"x", height:-10, align:"center", valign:"middle",
     values:[
 //      {text:"daily kmCompleted", toggle:true,markerType: "item"}
-	  {text:"A3", toggle:true,markerType: "item"},
-      {text:"A2", toggle:true,markerType: "item"},
-      {text:"A1", toggle:true,markerType: "item"}
+	  {text:"Атлет1", toggle:true,markerType: "item"},
+      {text:"Атлет2", toggle:true,markerType: "item"},
+      {text:"Атлет3", toggle:true,markerType: "item"}
     ]
   }	,	
 
   scheme:{ $group: { by:"dayd",  map:{
-        A3:["A3","any"],
-        A2:["A2","any"],
-        A1:["A1","any"]
+        Атлет1:["Атлет1","any"],
+        Атлет2:["Атлет2","any"],
+        Атлет3:["Атлет3","any"]
       }
     }
   }, 
   
   series:[
  //   {  type:"spline",  value:"#kmCompleted#", item:{radius:3,borderColor: "#EC3774"}, line:{color:"#EC3774",width:2} }
-    {  type:"spline",  value:"#A3#", item:{radius:3,borderColor: "#14C800"}, line:{color:"#14C800",width:2} },
-    {  type:"spline",  value:"#A2#", item:{radius:3,borderColor: "#00ccff"}, line:{color:"#00ccff",width:2} },
-    {  type:"spline",  value:"#A1#", item:{radius:3,borderColor: "#EC3774"}, line:{color:"#EC3774",width:2} }
+    {  type:"spline",  value:"#Атлет3#", item:{radius:3,borderColor: "#14C800"}, line:{color:"#14C800",width:2} },
+    {  type:"spline",  value:"#Атлет2#", item:{radius:3,borderColor: "#00ccff"}, line:{color:"#00ccff",width:2} },
+    {  type:"spline",  value:"#Атлет1#", item:{radius:3,borderColor: "#EC3774"}, line:{color:"#EC3774",width:2} }
 
   ],
 
