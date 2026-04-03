@@ -1785,10 +1785,51 @@ var x = Math.floor(pLeft + (index * step));
 }
 
  if ( $$('cal2').getValue() !== null ) {
+		var targetDay = $$('cal2').getValue().toLocaleDateString('en-CA').slice(-2); 
+        var data = this.data.serialize();
+        var index = data.findIndex(obj => obj.dayd === targetDay);
+
+        if (index !== -1) {
+
+var x = Math.floor(pLeft + (index * step));
+            // Пример отрисовки одной линии для краткости:
+            ctx.save();
+ //           ctx.setLineDash([5, 5]); // Пунктир 5px через 5px
+            ctx.setLineDash([10, 5]); // Пунктир 5px через 5px
+			ctx.lineWidth = 2;
+            ctx.strokeStyle = "#00ccff";
+            ctx.beginPath();
+            ctx.moveTo(x, yStart);
+            ctx.lineTo(x, yEnd);
+            ctx.stroke();
+            ctx.restore();
+
+        }
 
 }
 
  if ( $$('cal3').getValue() !== null ) {
+
+		var targetDay = $$('cal3').getValue().toLocaleDateString('en-CA').slice(-2); 
+        var data = this.data.serialize();
+        var index = data.findIndex(obj => obj.dayd === targetDay);
+
+        if (index !== -1) {
+
+var x = Math.floor(pLeft + (index * step));
+            // Пример отрисовки одной линии для краткости:
+            ctx.save();
+ //           ctx.setLineDash([5, 5]); // Пунктир 5px через 5px
+            ctx.setLineDash([10, 5]); // Пунктир 5px через 5px
+			ctx.lineWidth = 2;
+            ctx.strokeStyle = "#14C800";
+            ctx.beginPath();
+            ctx.moveTo(x, yStart);
+            ctx.lineTo(x, yEnd);
+            ctx.stroke();
+            ctx.restore();
+
+        }
 
 }
 
