@@ -685,6 +685,22 @@ tt = tt + d[0].studentTasksInfo.diaryTasks[r].tracks.length;
   }
 }
 
+
+function Valid_dayd(d,r,t) {
+ try {   
+	if (d[0].studentTasksInfo.diaryTasks[r].date == null) {
+	return t;
+	}
+else
+  {	
+	return d[0].studentTasksInfo.diaryTasks[r].date.slice(-2);
+  }
+  
+  } catch {
+    return t;
+  }
+}
+
 		
 		
 function Valid_C(d,r,t) {
@@ -1642,7 +1658,7 @@ cols:[
 t1 = "" ;
 
 for(var i = n2-1; i > n1-1 ; i--){
-  t1 = t1 + '{ "Атлет1":"' + d[0].studentTasksInfo.diaryTasks[i].kmCompleted + '", "id":"' + i + '", "dayd":"' + d[0].studentTasksInfo.diaryTasks[i].date.slice(-2) + '"},\n'
+  t1 = t1 + '{ "Атлет1":"' + Valid_km(d,i,"") + '", "id":"' + i + '", "dayd":"' + Valid_dayd(d,i,"") + '"},\n'
  }
 
 t1 = "[\n" + t1.slice(0,t1.length-2) + "\n]" ;
