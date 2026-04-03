@@ -1658,7 +1658,7 @@ cols:[
 t1 = "" ;
 
 for(var i = n2-1; i > n1-1 ; i--){
-  t1 = t1 + '{ "Атлет1":"' + Valid_km(d1,i,"") + '"Атлет2":"' + Valid_km(d2,i,"") + '"Атлет3":"' + Valid_km(d3,i,"") + '", "id":"' + i + '", "dayd":"' + Valid_dayd(d,i,"") + '"},\n'
+  t1 = t1 + '{ "Атлет1":"' + Valid_km(d1,i,"") + '", "Атлет2":"' + Valid_km(d2,i,"") + '", "Атлет3":"' + Valid_km(d3,i,"") + '", "id":"' + i + '", "dayd":"' + Valid_dayd(d,i,"") + '"},\n'
  }
 
 t1 = "[\n" + t1.slice(0,t1.length-2) + "\n]" ;
