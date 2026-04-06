@@ -1721,19 +1721,24 @@ cols:[
 
 on: {
 
-  onLegendClick: function(index){
-    // Инвертируем наше состояние
-	
-	console.log(index);
-	
-    mySeriesVisibility[index] = !mySeriesVisibility[index];
+  onLegendClick: function(ev) {
+    // 1. Находим ID элемента легенды, по которому кликнули
+    var id = this.getLegend().locate(ev);
     
-    console.log("Серия " + index + " теперь " + (mySeriesVisibility[index] ? "видна" : "скрыта"));
+    if (id) {
+      // 2. Находим индекс этой серии в массиве series
+      var index = this.config.series.findIndex(s => s.id == id || s.value == id);
+      
+      // Если у серий нет ID, Webix использует значение (например, "#Атлет1#")
+      // В вашем случае можно просто сопоставить id с вашим массивом
+      console.log("Клик по серии с ID:", id);
+      
+      // 3. Инвертируем ваш флаг (если используете свой массив)
+      // mySeriesVisibility[index] = !mySeriesVisibility[index];
+    }
     
-    // Обязательно возвращаем true, чтобы график перерисовался штатно
-    return true; 
+    return true; // Чтобы сработал стандартный toggle
   }
-
 ,
 
     onAfterRender: function() {
