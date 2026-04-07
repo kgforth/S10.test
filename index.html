@@ -528,6 +528,7 @@ updateBarData(ind1, ind2, ind3);
 updategra1(ind1,ind2,ind3);
 updategra2(ind1,ind2,ind3);
 updategra3(ind1,ind2,ind3);
+updategra4(ind1,ind2,ind3);
 
 
 }
@@ -1524,6 +1525,51 @@ console.log(t1);
 }
 
 
+function updategra4(ind1,ind2,ind3) {
+
+setind10();
+
+console.log("updgra4:\n");
+console.log(ind10,ind20,ind30);
+
+//n2 = d1[0].studentTasksInfo.diaryTasks.length;
+//n1 = n2-21;
+
+t1 = "" ;
+
+//if (ind1 !== "") {
+
+//for(var i = n2-1; i > n1-1 ; i--){
+for(var i = 20; i >= 0 ; i--){
+  t1 = t1 + '{ "Атлет1":"' + Valid_M1000(d1,i+ind10,null) + '", "Атлет2":"' + Valid_M1000(d2,i+ind20,null) + '", "Атлет3":"' + Valid_M1000(d3,i+ind30,null) + '", "id":"' + i + '", "dayd":"' + Valid_dayd(d1,i+ind10,"") + '"},\n'
+//  t1 = t1 + '{ "Атлет1":"' + d1[0].studentTasksInfo.diaryTasks[i].kmCompleted + '", "id":"' + i + '", "dayd":"' + d1[0].studentTasksInfo.diaryTasks[i].date.slice(-2) + '"},\n'
+ }
+t1 = "[\n" + t1.slice(0,t1.length-2) + "\n]" ;
+
+//} else {
+
+//for(var i = n2-1; i > n1-1 ; i--){
+//for(var i = ind10 + 20; i > ind10-1 ; i--){
+//for(var i = 20; i >= 0 ; i--){
+//  t1 = t1 + '{ "kmCompleted":null, "id":"' + i + '", "dayd":"' + d1[0].studentTasksInfo.diaryTasks[i].date.slice(-2) + '"},\n'
+//  t1 = t1 + '{ "Атлет1":null, "id":"' + (i+ind10) + '", "dayd":"' + new Date(Date.now() - i * 24 * 60 * 60 * 1000).toLocaleDateString('en-CA').slice(-2) + '"},\n'
+// }
+//t1 = "[\n" + t1.slice(0,t1.length-2) + "\n]" ;
+
+//new Date(Date.now() - 2 * 24 * 60 * 60 * 1000).toLocaleDateString('en-CA').slice(-2)
+
+//}
+
+ $$("gra4").clearAll();
+
+ $$("gra4").parse(t1);
+
+console.log(t1);
+ 
+}
+
+
+
 
 function main_process() {
 
@@ -2462,6 +2508,237 @@ var x = Math.floor(pLeft + (index * step));
 
 // -----------------------------------------
 
+
+// ==============================================================================
+
+t1 = "" ;
+
+for(var i = n2-1; i > n1-1 ; i--){
+  t1 = t1 + '{ "Атлет1":"' + Valid_M1000(d1,i,null) + '", "Атлет2":"' + Valid_M1000(d2,i,null) + '", "Атлет3":"' + Valid_M1000(d3,i,null) + '", "id":"' + i + '", "dayd":"' + Valid_dayd(d,i,"") + '"},\n'
+ }
+
+t1 = "[\n" + t1.slice(0,t1.length-2) + "\n]" ;
+
+tgra4 = t1;
+
+gg = JSON.parse(t1);
+
+console.log(gg);
+
+//gra1 = {  width:720,  height:201,  type:"clean",
+gra4 = {  height:201,  type:"clean",
+cols:[
+          view:"chart",
+		  id:"gra4",		  
+          type:"line",
+//          value:"#kmCompleted#", 
+		  padding:{left:25,bottom: 17  },
+          preset:"plot" ,
+//		  label: function(obj){
+//			return "<span style='color:blue'><font size=1>" + parseInt(obj.kmCompleted,10) + "</font></span>";
+//			} ,
+		xAxis:{
+            template:"'#dayd#"
+          },
+          yAxis:{
+          },
+  legend:{layout:"x", height:-10, align:"center", valign:"middle",
+    values:[
+//      {text:"daily kmCompleted", toggle:true,markerType: "item"}
+	  {text:" ", toggle:"Атлет1",markerType: "item"},
+      {text:" ", toggle:"Атлет2",markerType: "item"},
+      {text:" daily fastest 1000m", toggle:"Атлет3",markerType: "item"}
+    ]
+  }	,	
+
+  scheme:{ $group: { by:"dayd",  map:{
+        Атлет3:["Атлет3","any"],
+        Атлет2:["Атлет2","any"],
+        Атлет1:["Атлет1","any"]
+
+      }
+    }
+  }, 
+  
+  series:[
+ //   {  type:"spline",  value:"#kmCompleted#", item:{radius:3,borderColor: "#EC3774"}, line:{color:"#EC3774",width:2} }
+    {  type:"spline",  value:"#Атлет1#", item:{radius:3,borderColor: "#EC3774"}, line:{color:"#EC3774",width:2} },
+    {  type:"spline",  value:"#Атлет2#", item:{radius:3,borderColor: "#00ccff"}, line:{color:"#00ccff",width:2} },
+    {  type:"spline",  value:"#Атлет3#", item:{radius:3,borderColor: "#14C800"}, line:{color:"#14C800",width:2} }
+
+
+  ],
+
+
+on: {
+
+  onLegendClick: function() {
+    // 1. Даем Webix 50мс, чтобы он скрыл линию и обновил DOM
+    webix.delay(() => {
+      
+      // 2. Вызываем событие onAfterRender принудительно
+      // Первый аргумент - имя события, второй - массив аргументов (обычно пустой для afterRender)
+      this.callEvent("onAfterRender", []);
+      
+      // Теперь ваш код внутри onAfterRender выполнится снова
+      console.log("onAfterRender вызван повторно после клика на легенде");
+      
+    }, null, null, 50);
+
+    return true; 
+  }
+
+,
+
+    onAfterRender: function() {
+
+    // Используем delay, чтобы дождаться полной отрисовки
+    webix.delay(() => {	
+
+ // 1. Находим элемент canvas внутри компонента
+        var canvas = this.$view.querySelector("canvas");
+        if (!canvas) return;
+
+       // 2. Получаем 2D контекст
+        var ctx = canvas.getContext("2d");		
+ 
+//	  ctx.clearRect(0, 0, canvas.width, canvas.height);
+// чтобы не затереть маркеры в легенде !!!! смещение по у от линии пунктирной
+	  ctx.clearRect(0, 30, canvas.width, canvas.height);
+
+            var yStart = 30;  // небольшой отступ сверху
+            var yEnd = this.$height - 16; // отступ снизу (чтобы не заходить на подписи оси)
+
+        // 1. Берем чистую ширину контейнера
+        var totalWidth = this.$width;
+        
+        // 2. Определяем отступы (padding). 
+        // Если в конфиге чарта вы их не меняли, Webix по умолчанию ставит 50.
+//        var pLeft = 50; 
+        var pLeft = 35; 
+        var pRight = 32;
+        
+        // 3. Вычисляем шаг между точками
+        // (Ширина - отступы) / (21 точка - 1 промежуток)
+        var step = (totalWidth - pLeft - pRight) / (20);
+
+
+ if ( $$('cal1').getValue() !== null && checkVisibility("gra4", 0) ) {
+
+
+
+		var targetDay = $$('cal1').getValue().toLocaleDateString('en-CA').slice(-2); 
+ 
+        var data = this.data.serialize();
+        
+        // Ищем объект, у которого поле date заканчивается на "15" 
+        // или просто равно "15"
+//        var index = data.findIndex(obj => {
+            // Приводим к строке на всякий случай и берем последние 2 символа
+//            var dateStr = String(obj.date);
+//            return dateStr.slice(-2) === targetDay;
+//        });
+
+        // Поиск индекса (как мы обсуждали ранее)
+//        var index = data.findIndex(obj => String(obj.date).slice(-2) === targetDay);
+      var index = data.findIndex(obj => obj.dayd === targetDay);
+
+        if (index !== -1) {
+            // Используем внутренний метод для получения X
+            // Важно: передаем индекс точки
+
+//            var baseX = this._getItemX(index); // центральная координата X
+        
+        // 4. Итоговая координата X
+//        var x = pLeft + (index * step);
+
+//var x = Math.floor(pLeft + (index * step)) + 0.5;
+var x = Math.floor(pLeft + (index * step));
+
+        console.log("Index:", index, "Final X:", x);			
+			
+              
+            // Пример отрисовки одной линии для краткости:
+            ctx.save();
+ //           ctx.setLineDash([5, 5]); // Пунктир 5px через 5px
+            ctx.setLineDash([10, 5]); // Пунктир 5px через 5px
+			ctx.lineWidth = 2;
+            ctx.strokeStyle = "#EC3774";
+            ctx.beginPath();
+            ctx.moveTo(x, yStart);
+            ctx.lineTo(x, yEnd);
+            ctx.stroke();
+            ctx.restore();
+
+//this.render(null, null, true);					
+
+        }
+//-------------------
+}
+
+ if ( $$('cal2').getValue() !== null && checkVisibility("gra4", 1) ) {
+		var targetDay = $$('cal2').getValue().toLocaleDateString('en-CA').slice(-2); 
+        var data = this.data.serialize();
+        var index = data.findIndex(obj => obj.dayd === targetDay);
+
+        if (index !== -1) {
+
+var x = Math.floor(pLeft + (index * step));
+            // Пример отрисовки одной линии для краткости:
+            ctx.save();
+ //           ctx.setLineDash([5, 5]); // Пунктир 5px через 5px
+            ctx.setLineDash([10, 5]); // Пунктир 5px через 5px
+			ctx.lineWidth = 2;
+            ctx.strokeStyle = "#00ccff";
+            ctx.beginPath();
+            ctx.moveTo(x-2, yStart);
+            ctx.lineTo(x-2, yEnd);
+            ctx.stroke();
+            ctx.restore();
+
+        }
+
+}
+
+ if ( $$('cal3').getValue() !== null && checkVisibility("gra4", 2)  ) {
+
+		var targetDay = $$('cal3').getValue().toLocaleDateString('en-CA').slice(-2); 
+        var data = this.data.serialize();
+        var index = data.findIndex(obj => obj.dayd === targetDay);
+
+        if (index !== -1) {
+
+var x = Math.floor(pLeft + (index * step));
+            // Пример отрисовки одной линии для краткости:
+            ctx.save();
+ //           ctx.setLineDash([5, 5]); // Пунктир 5px через 5px
+            ctx.setLineDash([10, 5]); // Пунктир 5px через 5px
+			ctx.lineWidth = 2;
+            ctx.strokeStyle = "#14C800";
+            ctx.beginPath();
+            ctx.moveTo(x+2, yStart);
+            ctx.lineTo(x+2, yEnd);
+            ctx.stroke();
+            ctx.restore();
+
+        }
+
+}
+
+//-------------------
+
+
+	}, this, [], 100); 
+    }
+}  ,  
+          data: gg
+        }
+
+]
+};
+
+// -----------------------------------------
+
 // ==============================================================================
 
 
@@ -2779,6 +3056,7 @@ webix.ui(
 				gra1,
 				gra2,
 				gra3,
+				gra4,
                  cmnt1 
 			   ]
 		}  
@@ -2884,6 +3162,7 @@ updateBarData(ind1, ind2, ind3);
 updategra1(ind1,ind2,ind3);
 updategra2(ind1,ind2,ind3);
 updategra3(ind1,ind2,ind3);
+updategra4(ind1,ind2,ind3);
 
 return;
 }
@@ -2905,6 +3184,7 @@ updateBarData(ind1, ind2, ind3);
 updategra1(ind1,ind2,ind3);
 updategra2(ind1,ind2,ind3);
 updategra3(ind1,ind2,ind3);
+updategra4(ind1,ind2,ind3);
 
 
 } else {
@@ -2929,6 +3209,7 @@ updateBarData(ind1, ind2, ind3);
 updategra1(ind1,ind2,ind3);
 updategra2(ind1,ind2,ind3);
 updategra3(ind1,ind2,ind3);
+updategra4(ind1,ind2,ind3);
 
 
 return;
@@ -2951,6 +3232,7 @@ updateBarData(ind1, ind2, ind3);
 updategra1(ind1,ind2,ind3);
 updategra2(ind1,ind2,ind3);
 updategra3(ind1,ind2,ind3);
+updategra4(ind1,ind2,ind3);
 
 
 } else {
@@ -2975,6 +3257,7 @@ updateBarData(ind1, ind2, ind3);
 updategra1(ind1,ind2,ind3);
 updategra2(ind1,ind2,ind3);
 updategra3(ind1,ind2,ind3);
+updategra4(ind1,ind2,ind3);
 
 
 return;
@@ -2998,6 +3281,7 @@ updateBarData(ind1, ind2, ind3);
 updategra1(ind1,ind2,ind3);
 updategra2(ind1,ind2,ind3);
 updategra3(ind1,ind2,ind3);
+updategra4(ind1,ind2,ind3);
 
 
 } else {
