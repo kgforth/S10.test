@@ -1106,6 +1106,27 @@ for(var i=0; i < d[0].studentTasksInfo.diaryTasks[r].tracks.length ; i++){
   }
 }
 
+
+function Valid_M1000M(d,r,t) {
+  try {
+var tmp = d[0].studentTasksInfo.diaryTasks[r].tracks[0].json.fastest[1000].pace;
+
+if ( d[0].studentTasksInfo.diaryTasks[r].kmCompleted >= 1.000 ) {
+
+for(var i=0; i < d[0].studentTasksInfo.diaryTasks[r].tracks.length ; i++){
+ tmp = Math.min(tmp,d[0].studentTasksInfo.diaryTasks[r].tracks[i].json.fastest[1000].pace);
+ }
+        return tmp * -1 ;
+} else {
+    return t;
+}	
+
+  } catch {
+    return t;
+  }
+}
+
+
 function Valid_M5000(d,r,t) {
   try {
 var tmp = d[0].studentTasksInfo.diaryTasks[r].tracks[0].json.fastest[5000].pace;
@@ -1541,7 +1562,7 @@ t1 = "" ;
 
 //for(var i = n2-1; i > n1-1 ; i--){
 for(var i = 20; i >= 0 ; i--){
-  t1 = t1 + '{ "Атлет1":"' + Valid_M1000(d1,i+ind10,null) + '", "Атлет2":"' + Valid_M1000(d2,i+ind20,null) + '", "Атлет3":"' + Valid_M1000(d3,i+ind30,null) + '", "id":"' + i + '", "dayd":"' + Valid_dayd(d1,i+ind10,"") + '"},\n'
+  t1 = t1 + '{ "Атлет1":"' + Valid_M1000M(d1,i+ind10,null) + '", "Атлет2":"' + Valid_M1000M(d2,i+ind20,null) + '", "Атлет3":"' + Valid_M1000M(d3,i+ind30,null) + '", "id":"' + i + '", "dayd":"' + Valid_dayd(d1,i+ind10,"") + '"},\n'
 //  t1 = t1 + '{ "Атлет1":"' + d1[0].studentTasksInfo.diaryTasks[i].kmCompleted + '", "id":"' + i + '", "dayd":"' + d1[0].studentTasksInfo.diaryTasks[i].date.slice(-2) + '"},\n'
  }
 t1 = "[\n" + t1.slice(0,t1.length-2) + "\n]" ;
@@ -2514,7 +2535,7 @@ var x = Math.floor(pLeft + (index * step));
 t1 = "" ;
 
 for(var i = n2-1; i > n1-1 ; i--){
-  t1 = t1 + '{ "Атлет1":"-' + Valid_M1000(d1,i,null) + '", "Атлет2":-"' + Valid_M1000(d2,i,null) + '", "Атлет3":-"' + Valid_M1000(d3,i,null) + '", "id":"' + i + '", "dayd":"' + Valid_dayd(d,i,"") + '"},\n'
+  t1 = t1 + '{ "Атлет1":"' + Valid_M1000M(d1,i,null) + '", "Атлет2":"' + Valid_M1000M(d2,i,null) + '", "Атлет3":"' + Valid_M1000M(d3,i,null) + '", "id":"' + i + '", "dayd":"' + Valid_dayd(d,i,"") + '"},\n'
  }
 
 t1 = "[\n" + t1.slice(0,t1.length-2) + "\n]" ;
