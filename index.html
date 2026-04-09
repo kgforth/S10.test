@@ -3090,8 +3090,8 @@ onClick: {
     if (select) {
       select.onchange = () => {
         const val = select.value; // Теперь точно не undefined
-        webix.message(`Выбран трек: ${val} в строке ${id.row}`);
-        
+        webix.message(`Выбран трек: ${val}`);
+     trind1 = val;   
         // Обновляем данные в таблице, чтобы Webix "запомнил" выбор
         this.getItem(id.row).selectedTrack = val;
       };
@@ -3101,8 +3101,8 @@ onClick: {
     if (select) {
       select.onchange = () => {
         const val = select.value; // Теперь точно не undefined
-        webix.message(`Выбран трек: ${val} в строке ${id.row}`);
-        
+        webix.message(`Выбран трек: ${val}`);
+     trind2 = val;          
         // Обновляем данные в таблице, чтобы Webix "запомнил" выбор
         this.getItem(id.row).selectedTrack = val;
       };
@@ -3112,8 +3112,8 @@ onClick: {
     if (select) {
       select.onchange = () => {
         const val = select.value; // Теперь точно не undefined
-        webix.message(`Выбран трек: ${val} в строке ${id.row}`);
-        
+        webix.message(`Выбран трек: ${val}`);
+     trind3 = val;           
         // Обновляем данные в таблице, чтобы Webix "запомнил" выбор
         this.getItem(id.row).selectedTrack = val;
       };
