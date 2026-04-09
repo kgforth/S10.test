@@ -2959,17 +2959,16 @@ console.log(obj);
 
   // Проверяем, что это 5-я строка по счету (индекс 4)
   if (index === 4) {
-        const tracks = [2, 5, 3]; // пример длин треков
-         let options = `<option value="0">Все</option>`;
+          const tracks = [2, 5, 3]; // пример длин треков
+          let options = `<option value="0">Все</option>`;
           
           tracks.forEach((len, i) => {
-            options += `<option value="${i+1}">Трек ${i+1}: ${len}км</option>`;
+            options += `<option value="${i+1}">${len}км</option>`;
           });
 
-          return 
-		  `
+          return `
             <div class="cell_content">
-              <span>общая дистанция, км: <b>${obj.s1}</b>, треков: ${tracks.length}</span>
+              <span>xxxx</span>
               <select class="clean_select">
                 ${options}
               </select>
