@@ -541,8 +541,8 @@ ind10 = ind1;
 ind20 = ind2;
 ind30 = ind3;
 
-console.log("set indx:\n");
-console.log(ind10,ind20,ind30);
+//console.log("set indx:\n");
+//console.log(ind10,ind20,ind30);
 
 updateTable1(ind1, ind2, ind3);
 updateChartData(ind1, ind2, ind3);
@@ -1390,9 +1390,9 @@ function updateChartData2(ind1, ind2, ind3) {
         ff2.push(item);
     }
 
-console.log('+++++++++++++++++++++++++++++++++++++\n');
-console.log(ff2);
-console.log('+++++++++++++++++++++++++++++++++++++\n');
+//console.log('+++++++++++++++++++++++++++++++++++++\n');
+//console.log(ff2);
+//console.log('+++++++++++++++++++++++++++++++++++++\n');
 
 
     var chart = $$("gpace"); // используйте ID, который вы задали в конфиге
@@ -1448,8 +1448,8 @@ function updategra1(ind1,ind2,ind3) {
 
 setind10();
 
-console.log("updgra1:\n");
-console.log(ind10,ind20,ind30);
+//console.log("updgra1:\n");
+//console.log(ind10,ind20,ind30);
 
 //n2 = d1[0].studentTasksInfo.diaryTasks.length;
 //n1 = n2-21;
@@ -1483,7 +1483,7 @@ t1 = "[\n" + t1.slice(0,t1.length-2) + "\n]" ;
 
  $$("gra1").parse(t1);
 
-console.log(t1);
+//console.log(t1);
  
 }
 
@@ -1492,8 +1492,8 @@ function updategra2(ind1,ind2,ind3) {
 
 setind10();
 
-console.log("updgra2:\n");
-console.log(ind10,ind20,ind30);
+//console.log("updgra2:\n");
+//console.log(ind10,ind20,ind30);
 
 //n2 = d1[0].studentTasksInfo.diaryTasks.length;
 //n1 = n2-21;
@@ -1527,7 +1527,7 @@ t1 = "[\n" + t1.slice(0,t1.length-2) + "\n]" ;
 
  $$("gra2").parse(t1);
 
-console.log(t1);
+//console.log(t1);
  
 }
 
@@ -1535,8 +1535,8 @@ function updategra3(ind1,ind2,ind3) {
 
 setind10();
 
-console.log("updgra3:\n");
-console.log(ind10,ind20,ind30);
+//console.log("updgra3:\n");
+//console.log(ind10,ind20,ind30);
 
 //n2 = d1[0].studentTasksInfo.diaryTasks.length;
 //n1 = n2-21;
@@ -1570,7 +1570,7 @@ t1 = "[\n" + t1.slice(0,t1.length-2) + "\n]" ;
 
  $$("gra3").parse(t1);
 
-console.log(t1);
+//console.log(t1);
  
 }
 
@@ -1579,8 +1579,8 @@ function updategra4(ind1,ind2,ind3) {
 
 setind10();
 
-console.log("updgra4:\n");
-console.log(ind10,ind20,ind30);
+//console.log("updgra4:\n");
+//onsole.log(ind10,ind20,ind30);
 
 //n2 = d1[0].studentTasksInfo.diaryTasks.length;
 //n1 = n2-21;
@@ -1614,7 +1614,7 @@ t1 = "[\n" + t1.slice(0,t1.length-2) + "\n]" ;
 
  $$("gra4").parse(t1);
 
-console.log(t1);
+//console.log(t1);
  
 }
 
@@ -1875,7 +1875,7 @@ tgra1 = t1;
 
 gg = JSON.parse(t1);
 
-console.log(gg);
+//console.log(gg);
 
 //gra1 = {  width:720,  height:201,  type:"clean",
 gra1 = {  height:201,  type:"clean",
@@ -2108,7 +2108,7 @@ tgra2 = t1;
 
 gg = JSON.parse(t1);
 
-console.log(gg);
+//console.log(gg);
 
 //gra1 = {  width:720,  height:201,  type:"clean",
 gra2 = {  height:201,  type:"clean",
@@ -2341,7 +2341,7 @@ tgra2 = t1;
 
 gg = JSON.parse(t1);
 
-console.log(gg);
+//console.log(gg);
 
 //gra1 = {  width:720,  height:201,  type:"clean",
 gra3 = {  height:201,  type:"clean",
@@ -2573,7 +2573,7 @@ tgra4 = t1;
 
 gg = JSON.parse(t1);
 
-console.log(gg);
+//console.log(gg);
 
 //gra1 = {  width:720,  height:201,  type:"clean",
 gra4 = {  height:201,  type:"clean",
@@ -2950,25 +2950,28 @@ dtable = {
 	, 
 	      template: function(obj) {
   // Получаем индекс строки (0 — первая, 1 — вторая и т.д.)
+
+//console.log(obj);
+
   const index = $$("ddtable").getIndexById(obj.id);
 
   // Проверяем, что это 5-я строка по счету (индекс 4)
   if (index === 4) {
- //         const tracks = obj.trackDetails || [2, 5, 3]; // пример длин треков
-         const tracks = [2, 5, 3]; // пример длин треков
-         let options = `<option value="0">Все</option>`;
-          
-          tracks.forEach((len, i) => {
-            options += `<option value="${i+1}">Трек ${i+1}: ${len}км</option>`;
-          });
+//        const tracks = [2, 5, 3]; // пример длин треков
+//         let options = `<option value="0">Все</option>`;
+//          
+//          tracks.forEach((len, i) => {
+//            options += `<option value="${i+1}">Трек ${i+1}: ${len}км</option>`;
+//          });
 
-          return `
-            <div class="cell_content">
-              <span>общая дистанция, км: <b>${obj.value}</b>, треков: ${tracks.length}</span>
-              <select class="clean_select">
-                ${options}
-              </select>
-            </div>`;
+          return 'xxxx';
+//		  `
+//            <div class="cell_content">
+//              <span>общая дистанция, км: <b>${obj.value}</b>, треков: ${tracks.length}</span>
+//              <select class="clean_select">
+//                ${options}
+//              </select>
+//            </div>`;
         }
         
         // Обычное отображение для остальных строк
