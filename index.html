@@ -2008,7 +2008,7 @@ on: {
 //var x = Math.floor(pLeft + (index * step)) + 0.5;
 var x = Math.floor(pLeft + (index * step));
 
-        console.log("Index:", index, "Final X:", x);			
+//        console.log("Index:", index, "Final X:", x);			
 			
               
             // Пример отрисовки одной линии для краткости:
@@ -2241,7 +2241,7 @@ on: {
 //var x = Math.floor(pLeft + (index * step)) + 0.5;
 var x = Math.floor(pLeft + (index * step));
 
-        console.log("Index:", index, "Final X:", x);			
+//        console.log("Index:", index, "Final X:", x);			
 			
               
             // Пример отрисовки одной линии для краткости:
@@ -2400,7 +2400,7 @@ on: {
       this.callEvent("onAfterRender", []);
       
       // Теперь ваш код внутри onAfterRender выполнится снова
-      console.log("onAfterRender вызван повторно после клика на легенде");
+ //     console.log("onAfterRender вызван повторно после клика на легенде");
       
     }, null, null, 50);
 
@@ -2474,7 +2474,7 @@ on: {
 //var x = Math.floor(pLeft + (index * step)) + 0.5;
 var x = Math.floor(pLeft + (index * step));
 
-        console.log("Index:", index, "Final X:", x);			
+//        console.log("Index:", index, "Final X:", x);			
 			
               
             // Пример отрисовки одной линии для краткости:
@@ -2707,7 +2707,7 @@ on: {
 //var x = Math.floor(pLeft + (index * step)) + 0.5;
 var x = Math.floor(pLeft + (index * step));
 
-        console.log("Index:", index, "Final X:", x);			
+//       console.log("Index:", index, "Final X:", x);			
 			
               
             // Пример отрисовки одной линии для краткости:
@@ -2952,7 +2952,7 @@ dtable = {
 
 
 console.log(obj);
-console.log(obj.value);
+console.log(obj.s1);
 
   // Получаем индекс строки (0 — первая, 1 — вторая и т.д.)
   const index = $$("ddtable").getIndexById(obj.id);
@@ -2977,7 +2977,7 @@ console.log(obj.value);
         }
         
         // Обычное отображение для остальных строк
-        return obj.value;
+        return obj.s1;
       }
 	
 	},
