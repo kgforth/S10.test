@@ -2949,10 +2949,12 @@ dtable = {
     { id: "s1", css: "cursor_pointer", header: "<span title='загрузить' style='color:#EC3774'><b>&nbsp;&nbsp;------o------&nbsp;&nbsp;&nbsp;&#10227;</b></span>", width: 166 
 	, 
 	      template: function(obj) {
+
+
+console.log(obj);
+console.log(obj.value);
+
   // Получаем индекс строки (0 — первая, 1 — вторая и т.д.)
-
-//console.log(obj);
-
   const index = $$("ddtable").getIndexById(obj.id);
 
   // Проверяем, что это 5-я строка по счету (индекс 4)
