@@ -3196,8 +3196,7 @@ dtable = {
 //	      template: function(obj) {
           template: function(obj, common, value, column) {		  
 // console.log(obj);
-
-console.log(column.id, currentVal);
+//console.log(column.id, currentVal);
 
 if ( ind1 == "" ) {return obj.s1;}
 
@@ -3258,16 +3257,18 @@ if ( ind1 == "" ) {return obj.s1;}
 	},
     { id: "s2", css: "cursor_pointer", header: "<span title='загрузить' style='color:#00ccff'><b>&nbsp;&nbsp;------o------&nbsp;&nbsp;&nbsp;&#10227;</b></span>", width: 168 
     , 
-  template: function(obj) {
-
+          template: function(obj, common, value, column) {		  
 if ( ind2 == "" ) {return obj.s2;}
-
   const index = $$("ddtable").getIndexById(obj.id);
   if (index === 4) {
          const tracks = Valid_kkm(d2,ind2,[2, 5, 3]); // пример длин треков
-          let options = `<option value="0">Все</option>`;
+        let currentVal;
+         currentVal = trind2;
+        if (currentVal === undefined || currentVal === null) currentVal = "all";
+          let options = `<option value="0">Все</option>`;       
           tracks.forEach((len, i) => {
-            options += `<option value="${i+1}">${len}км</option>`;
+            const isSelected = (String(i) === String(currentVal)) ? "selected" : "";
+            options += `<option value="${i}" ${isSelected}>${len}км</option>`;
           });
           return `
             <div class="cell_content">
@@ -3277,21 +3278,23 @@ if ( ind2 == "" ) {return obj.s2;}
               </select>
             </div>`;
         }
-        // Обычное отображение для остальных строк
         return obj.s2;
       }
-	},
+ },
     { id: "s3", css: "cursor_pointer", header: "<span title='загрузить' style='color:#14C800'><b>&nbsp;&nbsp;------o------&nbsp;&nbsp;&nbsp;&#10227;</b></span>", width: 154 
 	    , 
-  template: function(obj) {
+          template: function(obj, common, value, column) {		  
 if ( ind3 == "" ) {return obj.s3;}
-
   const index = $$("ddtable").getIndexById(obj.id);
   if (index === 4) {
          const tracks = Valid_kkm(d3,ind3,[2, 5, 3]); // пример длин треков
-          let options = `<option value="0">Все</option>`;
+        let currentVal;
+         currentVal = trind3;
+        if (currentVal === undefined || currentVal === null) currentVal = "all";
+          let options = `<option value="0">Все</option>`;       
           tracks.forEach((len, i) => {
-            options += `<option value="${i+1}">${len}км</option>`;
+            const isSelected = (String(i) === String(currentVal)) ? "selected" : "";
+            options += `<option value="${i}" ${isSelected}>${len}км</option>`;
           });
           return `
             <div class="cell_content">
@@ -3301,7 +3304,6 @@ if ( ind3 == "" ) {return obj.s3;}
               </select>
             </div>`;
         }
-        // Обычное отображение для остальных строк
         return obj.s3;
       }
 
