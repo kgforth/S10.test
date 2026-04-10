@@ -3193,8 +3193,8 @@ dtable = {
     // Остальные столбцы — это ваши серии
     { id: "s1", css: "cursor_pointer", header: "<span title='загрузить' style='color:#EC3774'><b>&nbsp;&nbsp;------o------&nbsp;&nbsp;&nbsp;&#10227;</b></span>", width: 166 
 	, 
-//	      template: function(obj) {
-          template: function(obj, common, value, column) {		  
+	      template: function(obj) {
+//          template: function(obj, common, value, column) {		  
 
  console.log(obj);
 
@@ -3223,10 +3223,10 @@ if ( ind1 == "" ) {return obj.s1;}
 //        else if (column.id === "s3") currentVal = trind3;
 
         // Если переменная не задана, принудительно ставим "all"
-        if (currentVal === undefined || currentVal === null) currentVal = "0";
+        if (currentVal === undefined || currentVal === null) currentVal = "all";
 
 //          let options = `<option value="0">Все</option>`;
-            let options = `<option value="0" ${currentVal === "0" ? "selected" : ""}>Все</option>`;
+            let options = `<option value="all" ${currentVal === "all" ? "selected" : ""}>Все</option>`;
          
           tracks.forEach((len, i) => {
 //            options += `<option value="${i+1}">${len}км</option>`;
