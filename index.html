@@ -3223,15 +3223,15 @@ if ( ind1 == "" ) {return obj.s1;}
 //        else if (column.id === "s3") currentVal = trind3;
 
         // Если переменная не задана, принудительно ставим "all"
-        if (currentVal === undefined || currentVal === null) currentVal = "all";
+        if (currentVal === undefined || currentVal === null) currentVal = 0;
 
 //          let options = `<option value="0">Все</option>`;
-            let options = `<option value="all" ${currentVal === "all" ? "selected" : ""}>Все</option>`;
+            let options = `<option value="0" ${currentVal === "0" ? "selected" : ""}>Все</option>`;
          
           tracks.forEach((len, i) => {
 //            options += `<option value="${i+1}">${len}км</option>`;
             const isSelected = (String(i) === String(currentVal)) ? "selected" : "";
-            options += `<option value="${i}" ${isSelected}>${len}км</option>`;
+            options += `<option value="${i+1}" ${isSelected}>${len}км</option>`;
 
           });
 
