@@ -3207,6 +3207,12 @@ if ( ind1 == "" ) {return obj.s1;}
 
          const tracks = Valid_kkm(d1,ind1,[2, 5, 3]); // пример длин треков
 
+        // Определяем, какую глобальную переменную использовать для этой колонки
+        let selectedIndex;
+        if (column.id === "s1") selectedIndex = trind1;
+        else if (column.id === "s2") selectedIndex = trind2;
+        else if (column.id === "s3") selectedIndex = trind3;
+		
 //          let options = `<option value="0">Все</option>`;
             let options = `<option value="0" ${selectedIndex === "0" ? "selected" : ""}>Все</option>`;
          
