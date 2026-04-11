@@ -3534,6 +3534,9 @@ if ( ind1 == "" ) {return obj.s1;}
     { id: "s2", css: "cursor_pointer", header: "<span title='загрузить' style='color:#00ccff'><b>&nbsp;&nbsp;------o------&nbsp;&nbsp;&nbsp;&#10227;</b></span>", width: 168 
     , 
 	      template: function(obj) {
+
+alert(ind2);
+
 if ( ind2 == "" ) {return obj.s2;}
   // Получаем индекс строки (0 — первая, 1 — вторая и т.д.)
   const index = $$("ddtable").getIndexById(obj.id);
