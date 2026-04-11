@@ -1439,6 +1439,11 @@ if ( tt === undefined) {
 }
 
 
+
+// Превращаем всё в числа, если не число — заменяем на Infinity
+//let result = Math.min(...[tmp, tmp0].map(v => isNaN(parseFloat(v)) ? Infinity : parseFloat(v)));
+
+
 //============================
 function Valid_M200(d,r,t) {
   try {
@@ -1447,7 +1452,8 @@ var tmp = d[0].studentTasksInfo.diaryTasks[r].tracks[0].json.fastest[200].pace;
 if ( d[0].studentTasksInfo.diaryTasks[r].kmCompleted >= 0.200 ) {
 
 for(var i=0; i < d[0].studentTasksInfo.diaryTasks[r].tracks.length ; i++){
- tmp = Math.min(tmp,d[0].studentTasksInfo.diaryTasks[r].tracks[i].json.fastest[200].pace);
+ tmp0 = d[0].studentTasksInfo.diaryTasks[r].tracks[i].json.fastest[200].pace;
+ tmp = Math.min(...[tmp, tmp0].map(v => isNaN(parseFloat(v)) ? Infinity : parseFloat(v)));
  }
     return tmp;
 } else {
