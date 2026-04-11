@@ -1697,7 +1697,7 @@ if ( d[0].studentTasksInfo.diaryTasks[r].kmCompleted >= 21.097 ) {
 
 for(var i=0; i < d[0].studentTasksInfo.diaryTasks[r].tracks.length ; i++){
 // tmp = Math.min(tmp,d[0].studentTasksInfo.diaryTasks[r].tracks[i].json.fastest[21097].pace);
- try { tmp0 = d[0].studentTasksInfo.diaryTasks[r].tracks[i].json.fastest[21097].pace; } catch { tmp0 = Infinity; }
+ tmp0 = d[0]?.studentTasksInfo?.diaryTasks[r]?.tracks[i]?.json?.fastest[21097]?.pace || 99999 ; 
  tmp = Math.min(tmp, tmp0);
  }
         return tmp;
