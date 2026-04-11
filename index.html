@@ -3511,7 +3511,7 @@ if ( ind1 == "" ) {return obj.s1;}
   if (index === 4) {
 //         const tracks = [2, 5, 3]; // пример длин треков
 
-         const tracks = Valid_kkm(d1,ind1,[2, 5, 3]); // пример длин треков
+         const tracks = Valid_kkm(d1,ind1,[]); // пример длин треков
           let options = `<option value="0" ${trind1 == 0 ? "selected" : ""}>Все</option>`;       
           tracks.forEach((len, i) => {
             options += `<option value="${i+1}" ${trind1-1 == i ? "selected" : ""}>${len}км</option>`;
@@ -3540,7 +3540,7 @@ if ( ind2 == "" ) {return obj.s2;}
   // Проверяем, что это 5-я строка по счету (индекс 4)
   if (index === 4) {
 //         const tracks = [2, 5, 3]; // пример длин треков
-         const tracks = Valid_kkm(d2,ind2,[2, 5, 3]); // пример длин треков
+         const tracks = Valid_kkm(d2,ind2,[]); // пример длин треков
           let options = `<option value="0" ${trind2 == 0 ? "selected" : ""}>Все</option>`;       
           tracks.forEach((len, i) => {
             options += `<option value="${i+1}" ${trind2-1 == i ? "selected" : ""}>${len}км</option>`;
@@ -3567,7 +3567,7 @@ if ( ind3 == "" ) {return obj.s3;}
   // Проверяем, что это 5-я строка по счету (индекс 4)
   if (index === 4) {
 //         const tracks = [2, 5, 3]; // пример длин треков
-         const tracks = Valid_kkm(d3,ind3,[2, 5, 3]); // пример длин треков
+         const tracks = Valid_kkm(d3,ind3,[]); // пример длин треков
           let options = `<option value="0" ${trind3 == 0 ? "selected" : ""}>Все</option>`;       
           tracks.forEach((len, i) => {
             options += `<option value="${i+1}" ${trind3-1 == i ? "selected" : ""}>${len}км</option>`;
