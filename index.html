@@ -1508,7 +1508,9 @@ var tmp = d[0].studentTasksInfo.diaryTasks[r].tracks[0].json.fastest[1000].pace;
 if ( d[0].studentTasksInfo.diaryTasks[r].kmCompleted >= 1.000 ) {
 
 for(var i=0; i < d[0].studentTasksInfo.diaryTasks[r].tracks.length ; i++){
- tmp = Math.min(tmp,d[0].studentTasksInfo.diaryTasks[r].tracks[i].json.fastest[1000].pace);
+ //tmp = Math.min(tmp,d[0].studentTasksInfo.diaryTasks[r].tracks[i].json.fastest[1000].pace);
+ tmp0 = d[0].studentTasksInfo.diaryTasks[r].tracks[i].json.fastest[1000].pace;
+ tmp = Math.min(...[tmp, tmp0].map(v => isNaN(parseFloat(v)) ? Infinity : parseFloat(v)));
  }
         return tmp;
 } else {
@@ -1583,7 +1585,9 @@ var tmp = d[0].studentTasksInfo.diaryTasks[r].tracks[0].json.fastest[5000].pace;
 if ( d[0].studentTasksInfo.diaryTasks[r].kmCompleted >= 5.000 ) {
 
 for(var i=0; i < d[0].studentTasksInfo.diaryTasks[r].tracks.length ; i++){
- tmp = Math.min(tmp,d[0].studentTasksInfo.diaryTasks[r].tracks[i].json.fastest[5000].pace);
+ //tmp = Math.min(tmp,d[0].studentTasksInfo.diaryTasks[r].tracks[i].json.fastest[5000].pace);
+ tmp0 = d[0].studentTasksInfo.diaryTasks[r].tracks[i].json.fastest[5000].pace;
+ tmp = Math.min(...[tmp, tmp0].map(v => isNaN(parseFloat(v)) ? Infinity : parseFloat(v)));
  }
         return tmp;
 } else {
@@ -1636,7 +1640,9 @@ var tmp = d[0].studentTasksInfo.diaryTasks[r].tracks[0].json.fastest[10000].pace
 if ( d[0].studentTasksInfo.diaryTasks[r].kmCompleted >= 10.000 ) {
 
 for(var i=0; i < d[0].studentTasksInfo.diaryTasks[r].tracks.length ; i++){
- tmp = Math.min(tmp,d[0].studentTasksInfo.diaryTasks[r].tracks[i].json.fastest[10000].pace);
+ //tmp = Math.min(tmp,d[0].studentTasksInfo.diaryTasks[r].tracks[i].json.fastest[10000].pace);
+ tmp0 = d[0].studentTasksInfo.diaryTasks[r].tracks[i].json.fastest[1000].pace;
+ tmp = Math.min(...[tmp, tmp0].map(v => isNaN(parseFloat(v)) ? Infinity : parseFloat(v)));
  }
         return tmp;
 } else {
@@ -1690,7 +1696,9 @@ var tmp = d[0].studentTasksInfo.diaryTasks[r].tracks[0].json.fastest[21097].pace
 if ( d[0].studentTasksInfo.diaryTasks[r].kmCompleted >= 21.097 ) {
 
 for(var i=0; i < d[0].studentTasksInfo.diaryTasks[r].tracks.length ; i++){
- tmp = Math.min(tmp,d[0].studentTasksInfo.diaryTasks[r].tracks[i].json.fastest[21097].pace);
+// tmp = Math.min(tmp,d[0].studentTasksInfo.diaryTasks[r].tracks[i].json.fastest[21097].pace);
+ tmp0 = d[0].studentTasksInfo.diaryTasks[r].tracks[i].json.fastest[21097].pace;
+ tmp = Math.min(...[tmp, tmp0].map(v => isNaN(parseFloat(v)) ? Infinity : parseFloat(v)));
  }
         return tmp;
 } else {
