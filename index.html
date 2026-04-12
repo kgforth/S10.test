@@ -3513,6 +3513,31 @@ function saveSelectState(node, rowId, colId) {
 }
 
 
+function update_a1() {
+
+dx=1; 
+trind1=0; 
+extractId();
+
+}
+
+function update_a2() {
+
+dx=2; 
+trind2=0; 
+extractId();
+
+}
+
+function update_a3() {
+
+dx=3; 
+trind3=0; 
+extractId();
+
+}
+
+
 
 dtable = {
   view: "datatable",
@@ -3592,7 +3617,7 @@ if ( ind2 === "" ) {return obj.s2;}
 
 //<span class="custom-btn" tabindex="0" role="button">Кнопка</span>
 
-	{ id: "s3", header: "<span class='custom-btn' onclick='alert(1);' tabindex='0' role='button'>&#10063;</span><span style='color:#008A45'><b>&nbsp;&nbsp;------o------&nbsp;&nbsp;</b></span><span class='custom-btn' onclick='alert(2);' tabindex='0' role='button'>&#10227;</span>", width: 154 
+	{ id: "s3", header: "<span class='custom-btn' onclick='alert(1);' tabindex='0' role='button'>&#10063;</span><span style='color:#008A45'><b>&nbsp;&nbsp;------o------&nbsp;&nbsp;</b></span><span class='custom-btn' onclick='update_a3();' tabindex='0' role='button'>&#10227;</span>", width: 154 
 // dx=3; trind3=0; extractId();
 	    , 
 	      template: function(obj) {
