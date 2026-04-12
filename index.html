@@ -28,6 +28,34 @@
     width: 100%;
   }
 </style>
+<style>
+.custom-btn {
+  display: inline-block;        /* Чтобы работали отступы и размеры */
+  padding: 5px 15px;
+  background-color: #3498db;
+  color: white;
+  border-radius: 4px;
+  cursor: pointer;              /* Самое важное — меняет курсор на палец */
+  user-select: none;            /* Чтобы текст не выделялся при клике */
+  transition: background 0.2s;  /* Плавный эффект */
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+}
+
+/* Эффект при наведении */
+.custom-btn:hover {
+  background-color: #2980b9;
+}
+
+/* Эффект нажатия */
+.custom-btn:active {
+  background-color: #1c5980;
+  transform: translateY(1px);   /* Слегка "проседает" при клике */
+}
+</style>
+
+
+
 
 </head>
 
@@ -3559,7 +3587,11 @@ if ( ind2 === "" ) {return obj.s2;}
  },
     
 //	{ id: "s3", css: "cursor_pointer", header: "<span title='загрузить' style='color:#008A45'><b>&nbsp;&nbsp;------o------&nbsp;&nbsp;&nbsp;&#10227;</b></span>", width: 154 
-	{ id: "s3", css: "cursor_pointer", header: "<span title='загрузить' style='color:#008A45'><b>&nbsp;&nbsp;------o------&nbsp;&nbsp;&nbsp;&#10063;</b></span>", width: 154 
+//	{ id: "s3", css: "cursor_pointer", header: "<span title='загрузить' style='color:#008A45'><b>&nbsp;&nbsp;------o------&nbsp;&nbsp;&nbsp;&#10063;</b></span>", width: 154 
+
+//<span class="custom-btn" tabindex="0" role="button">Кнопка</span>
+
+	{ id: "s3", header: "<span style='color:#008A45'><b>&nbsp;&nbsp;------o------&nbsp;&nbsp;&nbsp;</b></span><span class='custom-btn' onclick='alert(1);' tabindex='0' role='button'>&#10063;</span>", width: 154 
 	    , 
 	      template: function(obj) {
 if ( ind3 === "" ) {return obj.s3;}
@@ -3603,12 +3635,12 @@ if ( ind3 === "" ) {return obj.s3;}
 		trind2=0;
 		extractId();
       }
-      if (id.column === "s3") {
+//      if (id.column === "s3") {
 //        webix.message("Действие для столбца 's3'");
-		dx=3;
-		trind3=0;
-		extractId();
-      }
+//		dx=3;
+//		trind3=0;
+//		extractId();
+//      }
     }
   }	
 ,	
