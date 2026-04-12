@@ -54,7 +54,58 @@
   transform: translateY(1px);   /* Слегка "проседает" при клике */
 }
 </style>
+<style>
+.custom-btn2 {
+  display: inline-block;        /* Чтобы работали отступы и размеры */
+  padding: 0px 5px;
+  line-height: 20px;
+  background-color: #00ccff;
+  color: #fff;
+  border-radius: 4px;
+  cursor: pointer;              /* Самое важное — меняет курсор на палец */
+  user-select: none;            /* Чтобы текст не выделялся при клике */
+  transition: background 0.2s;  /* Плавный эффект */
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+}
 
+/* Эффект при наведении */
+.custom-btn2:hover {
+  background-color: #1686a1;
+}
+
+/* Эффект нажатия */
+.custom-btn2:active {
+  background-color: #126d82;
+  transform: translateY(1px);   /* Слегка "проседает" при клике */
+}
+</style>
+<style>
+.custom-btn1 {
+  display: inline-block;        /* Чтобы работали отступы и размеры */
+  padding: 0px 5px;
+  line-height: 20px;
+  background-color: #EC3774;
+  color: #fff;
+  border-radius: 4px;
+  cursor: pointer;              /* Самое важное — меняет курсор на палец */
+  user-select: none;            /* Чтобы текст не выделялся при клике */
+  transition: background 0.2s;  /* Плавный эффект */
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+}
+
+/* Эффект при наведении */
+.custom-btn1:hover {
+  background-color: #1686a1;
+}
+
+/* Эффект нажатия */
+.custom-btn1:active {
+  background-color: #126d82;
+  transform: translateY(1px);   /* Слегка "проседает" при клике */
+}
+</style>
 
 
 
@@ -3552,7 +3603,9 @@ dtable = {
 //    { id: "param", header: "Параметр", width: 250, css: "webix_header_border webix_data_border" },
     { id: "param", header: "Параметр", width: 222 },
     // Остальные столбцы — это ваши серии
-    { id: "s1", css: "cursor_pointer", header: "<span title='загрузить' style='color:#EC3774'><b>&nbsp;&nbsp;------o------&nbsp;&nbsp;&nbsp;&#10227;</b></span>", width: 166 
+//    { id: "s1", css: "cursor_pointer", header: "<span title='загрузить' style='color:#EC3774'><b>&nbsp;&nbsp;------o------&nbsp;&nbsp;&nbsp;&#10227;</b></span>", width: 166 
+	{ id: "s1", header: "<span class='custom-btn1' onclick='alert(1);' tabindex='0' role='button'>&#10063;</span><span style='color:#EC3774'><b>&nbsp;&nbsp;------o------&nbsp;&nbsp;</b></span><span class='custom-btn1' onclick='update_a1();' tabindex='0' role='button'>&#10227;</span>", width: 166 
+
 	, 
 	      template: function(obj) {
 //          template: function(obj, common, value, column) {		  
@@ -3587,7 +3640,9 @@ if ( ind1 === "" ) {return obj.s1;}
       }
 	
 	},
-    { id: "s2", css: "cursor_pointer", header: "<span title='загрузить' style='color:#00ccff'><b>&nbsp;&nbsp;------o------&nbsp;&nbsp;&nbsp;&#10227;</b></span>", width: 168 
+//    { id: "s2", css: "cursor_pointer", header: "<span title='загрузить' style='color:#00ccff'><b>&nbsp;&nbsp;------o------&nbsp;&nbsp;&nbsp;&#10227;</b></span>", width: 168 
+	{ id: "s2", header: "<span class='custom-btn2' onclick='alert(2);' tabindex='0' role='button'>&#10063;</span><span style='color:#00ccff'><b>&nbsp;&nbsp;------o------&nbsp;&nbsp;</b></span><span class='custom-btn2' onclick='update_a2();' tabindex='0' role='button'>&#10227;</span>", width: 168 
+
     , 
 	      template: function(obj) {
 
@@ -3619,7 +3674,7 @@ if ( ind2 === "" ) {return obj.s2;}
 
 //<span class="custom-btn" tabindex="0" role="button">Кнопка</span>
 
-	{ id: "s3", header: "<span class='custom-btn3' onclick='alert(1);' tabindex='0' role='button'>&#10063;</span><span style='color:#008A45'><b>&nbsp;&nbsp;------o------&nbsp;&nbsp;</b></span><span class='custom-btn3' onclick='update_a3();' tabindex='0' role='button'>&#10227;</span>", width: 154 
+	{ id: "s3", header: "<span class='custom-btn3' onclick='alert(3);' tabindex='0' role='button'>&#10063;</span><span style='color:#008A45'><b>&nbsp;&nbsp;------o------&nbsp;&nbsp;</b></span><span class='custom-btn3' onclick='update_a3();' tabindex='0' role='button'>&#10227;</span>", width: 154 
 // dx=3; trind3=0; extractId();
 	    , 
 	      template: function(obj) {
