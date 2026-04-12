@@ -3702,23 +3702,23 @@ if ( ind3 === "" ) {return obj.s3;}
 
 	}
   ],
-    on: {
-    onHeaderClick: function(id, e, target) {
+//    on: {
+//    onHeaderClick: function(id, e, target) {
       // id.column — это ID колонки, по которой кликнули
       //   webix.message("Вы кликнули по заголовку: " + id.column);    
       // Если нужно выполнить действие только для конкретного столбца:
-      if (id.column === "s1") {
+//      if (id.column === "s1") {
 //        webix.message("Действие для столбца 's1'");
-		dx=1;
-		trind1=0;
-		extractId();
-      }
-      if (id.column === "s2") {
+//		dx=1;
+//		trind1=0;
+//		extractId();
+//      }
+//      if (id.column === "s2") {
 //        webix.message("Действие для столбца 's2'");
-		dx=2;
-		trind2=0;
-		extractId();
-      }
+//		dx=2;
+//		trind2=0;
+//		extractId();
+//      }
 //      if (id.column === "s3") {
 //        webix.message("Действие для столбца 's3'");
 //		dx=3;
@@ -3726,9 +3726,9 @@ if ( ind3 === "" ) {return obj.s3;}
 //		extractId();
 //		dx=3; trind3=0; extractId();
 //      }
-    }
-  }	
-,	
+//    }
+//  }	
+//,	
 onClick: {
   "clean_select": function(ev, id, node) {
     // Находим реальный элемент select, если клик попал на обертку
