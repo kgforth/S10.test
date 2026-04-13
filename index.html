@@ -125,6 +125,32 @@
 .my_win_header .webix_win_head .webix_icon:hover {
     color: #e0e0e0 !important;
 }
+
+
+/* 1. Красим фон шапки целиком */
+.my_win_custom .webix_win_head,
+.my_win_custom .webix_win_head .webix_toolbar {
+    background-color: #3498db !important;
+}
+
+
+/* 2. Текст заголовка — всегда белый */
+.my_win_custom .webix_win_head .webix_el_label {
+    color: #ffffff !important;
+}
+
+/* 3. Иконка закрытия — всегда белая */
+.my_win_custom .webix_win_head .webix_icon {
+    color: #ffffff !important;
+}
+
+/* 4. Исправляем "белый кружочек" при наведении */
+.my_win_custom .webix_win_head .webix_el_button:hover .webix_icon,
+.my_win_custom .webix_win_head .webix_el_icon:hover .webix_icon {
+    background-color: rgba(255, 255, 255, 0.2) !important; /* Полупрозрачный фон вместо белого */
+    border-radius: 50%;
+}
+
 </style>
 
 
@@ -2258,6 +2284,7 @@ com11 = webix.ui({
 
 com12 = webix.ui({
   view: "window",
+  css: "my_win_custom",
   id: "com2",
    // ГЛАВНЫЕ НАСТРОЙКИ ДЛЯ РАСТЯГИВАНИЯ:
   resize: true,         // Позволяет тянуть за края и правый нижний угол
