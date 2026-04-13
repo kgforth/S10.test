@@ -2218,6 +2218,7 @@ com11 = webix.ui({
   position: "center",
   head: {
     view: "toolbar",
+	id: "comm1",
     paddingX: 10,
     cols: [
       { view: "label", id: "com_1", label: "Информация" },
@@ -2230,6 +2231,19 @@ com11 = webix.ui({
     template: "#html#",
 //    template: com1,      // Ваша переменная с HTML
     scroll: "y"          // ВКЛЮЧАЕМ СКРОЛЛ
+  },
+    on: {
+    onShow: function() {
+      // Красим всё через обращение к DOM-узлам
+      let head = this.getHead().$view;
+      head.style.backgroundColor = "#3498db";
+      
+      let toolbar = $$("comm1").$view;
+      toolbar.style.backgroundColor = "#3498db";
+      
+      let label = $$("com_1").$view;
+      label.style.color = "#ffffff";
+    }
   }
 });
 
