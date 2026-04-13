@@ -742,7 +742,9 @@ c2 = c2.slice(0,c2.length-2);
 com1 = c2;
 //$$("com_1").setValue(Valid_Atlet(d) + "  Задачи и отчеты");
 //$$("com_1").define("label", Valid_Atlet(d) + "  Задачи и отчеты");
-$$("com1").getBody().setHTML(c2);
+//$$("com1").getBody().setHTML(c2);
+
+$$("body1").setValues({ html: "Ваш <b>новый</b> текст" });
 
 }
 
@@ -2196,7 +2198,8 @@ com11 = webix.ui({
   },
   body: {
     id: "body1",
-    template: com1,      // Ваша переменная с HTML
+    template: "#html#",
+//    template: com1,      // Ваша переменная с HTML
     scroll: "y"          // ВКЛЮЧАЕМ СКРОЛЛ
   }
 });
@@ -2224,7 +2227,8 @@ com12 = webix.ui({
   },
   body: {
     id: "body2",
-    template: com2,      // Ваша переменная с HTML
+    template: "#html#",
+//    template: com2,      // Ваша переменная с HTML
     scroll: "y"          // ВКЛЮЧАЕМ СКРОЛЛ
   }
 });
@@ -2252,7 +2256,8 @@ com13 = webix.ui({
   },
   body: {
     id: "body3",
-    template: com3,      // Ваша переменная с HTML
+    template: "#html#",
+//    template: com3,      // Ваша переменная с HTML
     scroll: "y"          // ВКЛЮЧАЕМ СКРОЛЛ
   }
 });
