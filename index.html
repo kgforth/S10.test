@@ -109,10 +109,10 @@
 <style>
 /* Наш кастомный стиль для шапки окна */
 .my_win_header .webix_view.webix_toolbar {
-    background-color: #3498db; /* Цвет Webix Primary (или #008A45 для зеленого)#1ca1c1;*/
-    border-bottom: 1px solid #1686a1;
+    background-color: #3498db; !important; /* Цвет Webix Primary (или #008A45 для зеленого)#1ca1c1;*/
+    border-bottom: 1px solid #1686a1; !important;
 }
- 
+
 /* Цвет текста и иконки внутри шапки */
 .my_win_header .webix_el_label, 
 .my_win_header .webix_icon {
@@ -2202,6 +2202,7 @@ updatecom3(d3);
 com11 = webix.ui({
   view: "window",
   id: "com1",
+  сss: "my_win_header", // ПОДКЛЮЧАЕМ НАШ СТИЛЬ
    // ГЛАВНЫЕ НАСТРОЙКИ ДЛЯ РАСТЯГИВАНИЯ:
   resize: true,         // Позволяет тянуть за края и правый нижний угол
   move: true,           // Позволяет таскать за заголовок
@@ -2212,7 +2213,6 @@ com11 = webix.ui({
   position: "center",
   head: {
     view: "toolbar",
-	css: "my_win_header", // ПОДКЛЮЧАЕМ НАШ СТИЛЬ
     paddingX: 10,
     cols: [
       { view: "label", id: "com_1", label: "Информация" },
