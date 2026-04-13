@@ -106,7 +106,24 @@
   transform: translateY(1px);   /* Слегка "проседает" при клике */
 }
 </style>
+<style>
+/* Наш кастомный стиль для шапки окна */
+.my_win_header .webix_view.webix_toolbar {
+    background-color: #1ca1c1; /* Цвет Webix Primary (или #008A45 для зеленого) */
+    border-bottom: 1px solid #1686a1;
+}
 
+/* Цвет текста и иконки внутри шапки */
+.my_win_header .webix_el_label, 
+.my_win_header .webix_icon {
+    color: #ffffff !important;
+}
+
+/* Эффект при наведении на иконку закрытия */
+.my_win_header .webix_icon:hover {
+    color: #e0e0e0 !important;
+}
+</style>
 
 
 </head>
@@ -2195,6 +2212,8 @@ com11 = webix.ui({
   position: "center",
   head: {
     view: "toolbar",
+	css: "my_win_header", // ПОДКЛЮЧАЕМ НАШ СТИЛЬ
+    paddingX: 10,
     cols: [
       { view: "label", id: "com_1", label: "Информация" },
       {}, 
