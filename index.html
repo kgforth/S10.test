@@ -822,9 +822,9 @@ c2 = c2.slice(0,c2.length-2);
 // new comment
 // $$("cmnt1").setHTML(c2); 
 com2 = c2;
-$$("com_2").setValue("=отчеты= " + Valid_Atlet(d));
+//$$("com_2").setValue("=отчеты= " + Valid_Atlet(d));
+$$("com_2").setValue("<span style='color:white; font-weight:500;'>=отчеты= " + Valid_Atlet(d) + "</span>" );
 $$("com2").getBody().setHTML(c2);
-
 
 }
 
@@ -2299,7 +2299,15 @@ com12 = webix.ui({
     cols: [
       { view: "label", id: "com_2", label: "Информация" },
       {}, 
-      { view: "icon", icon: "wxi-close", click: () => $$("com2").hide() }
+      { view: "icon", icon: "wxi-close", 
+	    on: {
+    onRender: function() {
+      this.getInputNode().style.color = "white";
+    }
+  },	  
+	  click: () => $$("com2").hide() },
+
+	  
     ]
   },
   body: {
