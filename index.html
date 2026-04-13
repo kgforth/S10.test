@@ -108,25 +108,6 @@
 </style>
 <style>
 
-/* Обращаемся к тулбару внутри нашего окна */
-.my_win_header .webix_win_head .webix_toolbar {
-    background-color: #3498db !important; /* Добавляем !important для гарантии */
-    border-bottom: 1px solid #2980b9 !important;
-}
-
-
-/* Цвет текста и иконки внутри шапки */
-.my_win_header .webix_win_head .webix_el_label, 
-.my_win_header .webix_win_head .webix_icon {
-    color: #ffffff !important;
-}
-
-/* Эффект при наведении на иконку закрытия */
-.my_win_header .webix_win_head .webix_icon:hover {
-    color: #e0e0e0 !important;
-}
-
-
 /* 1. Красим фон шапки целиком */
 .my_win_custom .webix_win_head,
 .my_win_custom .webix_win_head .webix_toolbar {
@@ -148,7 +129,7 @@
 .my_win_custom .webix_win_head .webix_el_button:hover .webix_icon,
 .my_win_custom .webix_win_head .webix_el_icon:hover .webix_icon {
     background-color: rgba(255, 255, 255, 0.2) !important; /* Полупрозрачный фон вместо белого */
-    border-radius: 50%;
+    border-radius: 5%;
 }
 
 </style>
@@ -795,9 +776,11 @@ com1 = c2;
 
 //$$("com_1").setValue("<span style='color:blue'>=отчеты= </span>" + Valid_Atlet(d));
 
-$$("com_1").setValue("=отчеты= " + Valid_Atlet(d));
+//$$("com_1").setValue("=отчеты= " + Valid_Atlet(d));
+//$$("body1").setValues({ html: com1 });
 
-$$("body1").setValues({ html: com1 });
+$$("com_1").setValue("<span style='color:white; font-weight:500;'>=отчеты= " + Valid_Atlet(d) + "</span>" );
+$$("com1").getBody().setHTML(c2);
 
 }
 
@@ -849,8 +832,12 @@ c2 = c2.slice(0,c2.length-2);
 // new comment
 // $$("cmnt1").setHTML(c2); 
 com3 = c2;
-$$("com_3").setValue("<span style='color:blue'>=отчеты= </span>" + Valid_Atlet(d));
+//$$("com_3").setValue("<span style='color:blue'>=отчеты= </span>" + Valid_Atlet(d));
+//$$("com3").getBody().setHTML(c2);
+
+$$("com_3").setValue("<span style='color:white; font-weight:500;'>=отчеты= " + Valid_Atlet(d) + "</span>" );
 $$("com3").getBody().setHTML(c2);
+
 
 }
 
@@ -2233,7 +2220,7 @@ updatecom3(d3);
 com11 = webix.ui({
   view: "window",
   id: "com1",
-  сss: "my_win_header", // ПОДКЛЮЧАЕМ НАШ СТИЛЬ
+  сss: "my_win_custom", // ПОДКЛЮЧАЕМ НАШ СТИЛЬ
    // ГЛАВНЫЕ НАСТРОЙКИ ДЛЯ РАСТЯГИВАНИЯ:
   resize: true,         // Позволяет тянуть за края и правый нижний угол
   move: true,           // Позволяет таскать за заголовок
@@ -2257,26 +2244,6 @@ com11 = webix.ui({
     template: "#html#",
 //    template: com1,      // Ваша переменная с HTML
     scroll: "y"          // ВКЛЮЧАЕМ СКРОЛЛ
-  },
-    on: {
-    onShow: function() {
-      // Красим всё через обращение к DOM-узлам
-      let head = this.getHead().$view;
-      head.style.backgroundColor = "#3498db";
-      
-      let toolbar = $$("comm1").$view;
-      toolbar.style.backgroundColor = "#3498db";
-      
-    // 2. Красим текст заголовка (ищем внутренний div с текстом)
-    let label = $$("com_1").$view.querySelector(".webix_el_box");
-    if (label) label.style.color = "#ffffff";	
-    label.style.fontWeight = "bold";	
-
-    // 3. Красим иконку закрытия (если у нее есть id: "my_close_icon")
-    let closeIcon = $$("com1_ico").$view.querySelector(".webix_icon");
-    if (closeIcon) closeIcon.style.color = "#ffffff";	
-	
-    }
   }
 });
 
@@ -2316,6 +2283,7 @@ com12 = webix.ui({
 
 com13 = webix.ui({
   view: "window",
+  css: "my_win_custom",
   id: "com3",
    // ГЛАВНЫЕ НАСТРОЙКИ ДЛЯ РАСТЯГИВАНИЯ:
   resize: true,         // Позволяет тянуть за края и правый нижний угол
