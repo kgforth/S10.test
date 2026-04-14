@@ -2219,36 +2219,34 @@ updatecom3(d3);
 
 
 
-com11 = webix.ui({
-  view: "window",
-  id: "com1",
-  сss: "my_win_custom", // ПОДКЛЮЧАЕМ НАШ СТИЛЬ
+//com11 = webix.ui({
+//  view: "window",
+//  id: "com1",
+//  сss: "my_win_custom", // ПОДКЛЮЧАЕМ НАШ СТИЛЬ
    // ГЛАВНЫЕ НАСТРОЙКИ ДЛЯ РАСТЯГИВАНИЯ:
-  resize: true,         // Позволяет тянуть за края и правый нижний угол
-  move: true,           // Позволяет таскать за заголовок
-  width: 700,           // Начальная ширина
-  height: 800,          // Начальная высота
-  minWidth: 250,        // Минимальная ширина при растяжке
-  minHeight: 150,       // Минимальная высота при растяжке
-  position: "center",
-  head: {
-    view: "toolbar",
-	 id: "comm1",
-    paddingX: 10,
-    cols: [
-      { view: "label",   сss: "my_win_custom", id: "com_1", label: "Информация" },
-      {}, 
-      { view: "icon", id: "com1_ico" , icon: "wxi-close", click: () => $$("com1").hide() }
-//      { view: "icon", icon: "wxi-close",  click: () => $$("com1").hide() } 
-    ]
-  },
-  body: {
-    id: "body1",
-    template: "#html#",
-//    template: com1,      // Ваша переменная с HTML
-    scroll: "y"          // ВКЛЮЧАЕМ СКРОЛЛ
-  }
-});
+//  resize: true,         // Позволяет тянуть за края и правый нижний угол
+//  move: true,           // Позволяет таскать за заголовок
+//  width: 700,           // Начальная ширина
+//  height: 800,          // Начальная высота
+//  minWidth: 250,        // Минимальная ширина при растяжке
+//  minHeight: 150,       // Минимальная высота при растяжке
+//  position: "center",
+//  head: {
+//    view: "toolbar",
+//	 id: "comm1",
+//    paddingX: 10,
+//    cols: [
+//      { view: "label",   сss: "my_win_custom", id: "com_1", label: "Информация" },
+//      {}, 
+//      { view: "icon", id: "com1_ico" , icon: "wxi-close", click: () => $$("com1").hide() }
+//    ]
+//  },
+//  body: {
+//    id: "body1",
+//    template: "#html#",
+//    scroll: "y"          // ВКЛЮЧАЕМ СКРОЛЛ
+//  }
+//});
 
 //$$("com1").show(); 
 
@@ -2281,6 +2279,38 @@ com12 = webix.ui({
 });
 
 //$$("com2").show(); 
+
+
+com11 = webix.ui({
+  view: "window",
+  css: "my_win_custom",
+  id: "com1",
+   // ГЛАВНЫЕ НАСТРОЙКИ ДЛЯ РАСТЯГИВАНИЯ:
+  resize: true,         // Позволяет тянуть за края и правый нижний угол
+  move: true,           // Позволяет таскать за заголовок
+  width: 700,           // Начальная ширина
+  height: 800,          // Начальная высота
+  minWidth: 250,        // Минимальная ширина при растяжке
+  minHeight: 150,       // Минимальная высота при растяжке
+  position: "center",
+  head: {
+    view: "toolbar",
+    cols: [
+      { view: "label", id: "com_1", label: "Информация" },
+      {}, 
+      { view: "icon", icon: "wxi-close",  click: () => $$("com1").hide() } 
+    ]
+  },
+  body: {
+    id: "body1",
+    template: "#html#",
+//    template: com2,      // Ваша переменная с HTML
+    scroll: "y"          // ВКЛЮЧАЕМ СКРОЛЛ
+  }
+});
+
+//$$("com1").show(); 
+
 
 com13 = webix.ui({
   view: "window",
