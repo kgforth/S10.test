@@ -922,6 +922,29 @@ function Valid_7slowdistance(d) {
   }
 }
 
+function Valid_7slowpercent(d) {
+  try {
+    t1=d[0].weekParameters.fast.distance;
+    t2=d[0].weekParameters.slow.distance;
+    t = Math.round((t2*100)/(t1+t2));
+    return t;
+  } catch {
+    return "";
+  }
+}
+
+function Valid_7fastpercent(d) {
+  try {
+    t1=d[0].weekParameters.fast.distance;
+    t2=d[0].weekParameters.slow.distance;
+    t = Math.round((t1*100)/(t1+t2));
+    return t;
+  } catch {
+    return "";
+  }
+}
+
+
 function Valid_7totalpace(d) {
   try {
     t=d[0].weekParameters.total.pace;
@@ -949,7 +972,6 @@ function Valid_7totaldistance(d) {
   }
 }
 
-// \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 function Valid_30fastpace(d) {
   try {
     t=d[0].monthParameters.fast.pace;
@@ -976,6 +998,29 @@ function Valid_30fastdistance(d) {
     return "";
   }
 }
+
+function Valid_30slowpercent(d) {
+  try {
+    t1=d[0].monthParameters.fast.distance;
+    t2=d[0].monthParameters.slow.distance;
+    t = Math.round((t2*100)/(t1+t2));
+    return t;
+  } catch {
+    return "";
+  }
+}
+
+function Valid_30fastpercent(d) {
+  try {
+    t1=d[0].monthParameters.fast.distance;
+    t2=d[0].monthParameters.slow.distance;
+    t = Math.round((t1*100)/(t1+t2));
+    return t;
+  } catch {
+    return "";
+  }
+}
+
 
 function Valid_30slowpace(d) {
   try {
@@ -1033,7 +1078,6 @@ function Valid_30totaldistance(d) {
 
 
 
-//\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 function Valid_Comment(d,r,t) {
   try {
     return d[0].studentTasksInfo.diaryTasks[r].reportParameters.comment;
@@ -2564,14 +2608,14 @@ hh = hh + "  <td style='width: 25%; text-align: left; padding: 8px;'>" + "Быс
 hh = hh + "  <td style='width: 20%; text-align: left; padding: 8px;'>" + Valid_7fastpace(d) + " мин/км</td>";
 hh = hh + "  <td style='width: 25%; text-align: left; padding: 8px;'>" + Valid_7fastbpm(d) + " bpm</td>";
 hh = hh + "  <td style='width: 20%; text-align: left; padding: 8px;'>" + Valid_7fastdistance(d) + " км</td>";
-hh = hh + "  <td style='            text-align: left; padding: 8px;'>" + "18" + "%</td>";
+hh = hh + "  <td style='            text-align: left; padding: 8px;'>" + Valid_7fastpercent(d) + "%</td>";
 hh = hh + "  </tr>";
 hh = hh + "  <tr style='height: 25px;'>";
 hh = hh + "  <td style='width: 25%; text-align: left; padding: 8px;'>" + "Медленно" + "</td>";
 hh = hh + "  <td style='width: 20%; text-align: left; padding: 8px;'>" + Valid_7slowpace(d) + " мин/км</td>";
 hh = hh + "  <td style='width: 25%; text-align: left; padding: 8px;'>" + Valid_7slowbpm(d) + " bpm</td>";
 hh = hh + "  <td style='width: 20%; text-align: left; padding: 8px;'>" + Valid_7slowdistance(d) + " км</td>";
-hh = hh + "  <td style='            text-align: left; padding: 8px;'>" + "82" + "%</td>";
+hh = hh + "  <td style='            text-align: left; padding: 8px;'>" + Valid_7slowpercent(d) + "%</td>";
 hh = hh + "  </tr>";
 hh = hh + "  <tr style='height: 25px;'>";
 hh = hh + "  <td style='width: 25%; text-align: left; padding: 8px;'>" + "Всего" + "</td>";
@@ -2591,14 +2635,14 @@ hh = hh + "  <td style='width: 25%; text-align: left; padding: 8px;'>" + "Быс
 hh = hh + "  <td style='width: 20%; text-align: left; padding: 8px;'>" + Valid_30fastpace(d) + " мин/км</td>";
 hh = hh + "  <td style='width: 25%; text-align: left; padding: 8px;'>" + Valid_30fastbpm(d) + " bpm</td>";
 hh = hh + "  <td style='width: 20%; text-align: left; padding: 8px;'>" + Valid_30fastdistance(d) + " км</td>";
-hh = hh + "  <td style='            text-align: left; padding: 8px;'>" + "21" + "%</td>";
+hh = hh + "  <td style='            text-align: left; padding: 8px;'>" + Valid_30fastpercent(d) + "%</td>";
 hh = hh + "  </tr>";
 hh = hh + "  <tr style='height: 25px;'>";
 hh = hh + "  <td style='width: 25%; text-align: left; padding: 8px;'>" + "Медленно" + "</td>";
 hh = hh + "  <td style='width: 20%; text-align: left; padding: 8px;'>" + Valid_30slowpace(d) + " мин/км</td>";
 hh = hh + "  <td style='width: 25%; text-align: left; padding: 8px;'>" + Valid_30slowbpm(d) + " bpm</td>";
 hh = hh + "  <td style='width: 20%; text-align: left; padding: 8px;'>" + Valid_30slowdistance(d) + " км</td>";
-hh = hh + "  <td style='            text-align: left; padding: 8px;'>" + "79" + "%</td>";
+hh = hh + "  <td style='            text-align: left; padding: 8px;'>" + Valid_30slowpercent(d) + "%</td>";
 hh = hh + "  </tr>";
 hh = hh + "  <tr style='height: 25px;'>";
 hh = hh + "  <td style='width: 25%; text-align: left; padding: 8px;'>" + "Всего" + "</td>";
