@@ -8,7 +8,7 @@
 <style> .tpred { color: #EC3774; background: #fff; border: .4em solid; border-color: rgb(256,256,256); margin: 0 0 0 -.4em;}</style>
 <style> .tpblue { color: #00ccff; background: #fff; border: .4em solid; border-color: rgb(256,256,256); margin: 0 0 0 -.4em;}</style>
 <style> .tpyellow { color: #008A45; background: #fff; border: .4em solid; border-color: rgb(256,256,256); margin: 0 0 0 -.4em;}</style>
-/* <style> .webix_hcell { cursor: pointer; } </style>  */
+
 <style>
 .clean_select {
     border: none;
@@ -85,8 +85,8 @@
   display: inline-block;        /* Чтобы работали отступы и размеры */
   padding: 0px 5px;
   line-height: 20px;
-  background-color: #EC3774;
-  color: #fff;
+  background-color: #d4dff7;
+  color: #000000;
   border-radius: 4px;
   cursor: pointer;              /* Самое важное — меняет курсор на палец */
   user-select: none;            /* Чтобы текст не выделялся при клике */
@@ -105,7 +105,7 @@
   background-color: #126d82;
   transform: translateY(1px);   /* Слегка "проседает" при клике */
 }
-</style>
+</style>  style='color: black; background-color:' 
 <style>
 
 /* 1. Красим фон шапки целиком */
@@ -138,6 +138,8 @@
 </head>
 
 <body>
+
+
 
 <!-- Контейнер лоадера (центрированный) -->
 <div id="loader" style="
@@ -190,6 +192,7 @@
 
 <script type="text/javascript">
 
+// <style> .webix_hcell { cursor: pointer; } </style> 
 
 //var oldUi = webix.ui;
 //webix.ui = function(config){
