@@ -105,7 +105,62 @@
   background-color: #126d82;
   transform: translateY(1px);   /* Слегка "проседает" при клике */
 }
-</style>  style='color: black; background-color:' 
+</style>
+
+<style>
+.custom-btn10 {
+  display: inline-block;        /* Чтобы работали отступы и размеры */
+  padding: 0px 5px;
+  line-height: 20px;
+  background-color: #d4dff7;
+  color: #ff0000;
+  border-radius: 4px;
+  cursor: pointer;              /* Самое важное — меняет курсор на палец */
+  user-select: none;            /* Чтобы текст не выделялся при клике */
+  transition: background 0.2s;  /* Плавный эффект */
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+}
+
+/* Эффект при наведении */
+.custom-btn1:hover {
+  background-color: #1686a1;
+}
+
+/* Эффект нажатия */
+.custom-btn1:active {
+  background-color: #126d82;
+  transform: translateY(1px);   /* Слегка "проседает" при клике */
+}
+</style>
+
+<style>
+.custom-btn11 {
+  display: inline-block;        /* Чтобы работали отступы и размеры */
+  padding: 0px 5px;
+  line-height: 20px;
+  background-color: #d4dff7;
+  color: #00FF00;
+  border-radius: 4px;
+  cursor: pointer;              /* Самое важное — меняет курсор на палец */
+  user-select: none;            /* Чтобы текст не выделялся при клике */
+  transition: background 0.2s;  /* Плавный эффект */
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+}
+
+/* Эффект при наведении */
+.custom-btn1:hover {
+  background-color: #1686a1;
+}
+
+/* Эффект нажатия */
+.custom-btn1:active {
+  background-color: #126d82;
+  transform: translateY(1px);   /* Слегка "проседает" при клике */
+}
+</style>
+
 <style>
 
 /* 1. Красим фон шапки целиком */
@@ -4593,7 +4648,7 @@ dtable = {
     // Остальные столбцы — это ваши серии &#9777
 //    { id: "s1", css: "cursor_pointer", header: "<span title='загрузить' style='color:#EC3774'><b>&nbsp;&nbsp;------o------&nbsp;&nbsp;&nbsp;&#10227;</b></span>", width: 166 
 //	{ id: "s1", header: "<span style='color:#EC3774'><b>&nbsp;&nbsp;--o--&nbsp;&nbsp;</b></span><span class='custom-btn1' onclick='$$(`info1`).show();' tabindex='0' role='button'>&#10872;</span><span class='custom-btn1' onclick='$$(`com1`).show();' tabindex='0' role='button'>&#129534;</span><span class='custom-btn1' onclick='cleall1();' tabindex='0' role='button'>&#10008;</span><span class='custom-btn1' onclick='update_a1();' tabindex='0' role='button'>&#10004;</span>", width: 166 
-	{ id: "s1", header: "<span style='color:#EC3774'><b>&nbsp;&nbsp;--o--&nbsp;&nbsp;</b></span><span class='custom-btn1' onclick='$$(`info1`).show();' tabindex='0' role='button'>&#9777;&nbsp;</span><span class='custom-btn1' onclick='$$(`com1`).show();' tabindex='0' role='button'>&#129534;&nbsp;</span><span class='custom-btn1' onclick='cleall1();' tabindex='0' role='button'>&#10008;&nbsp;</span><span class='custom-btn1' onclick='update_a1();' tabindex='0' role='button'>&#10004;</span>", width: 166 
+	{ id: "s1", header: "<span style='color:#EC3774'><b>&nbsp;&nbsp;--o--&nbsp;&nbsp;</b></span><span class='custom-btn1' onclick='$$(`info1`).show();' tabindex='0' role='button'>&#9777;</span><span class='custom-btn1' onclick='$$(`com1`).show();' tabindex='0' role='button'>&#129534;</span><span class='custom-btn10' onclick='cleall1();' tabindex='0' role='button'>&#10008;</span><span class='custom-btn11' onclick='update_a1();' tabindex='0' role='button'>&#10004;</span>", width: 166 
 
 	, 
 	      template: function(obj) {
