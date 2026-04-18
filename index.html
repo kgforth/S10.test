@@ -487,6 +487,7 @@ if (lastId == 0) {
 
 d1=d;
 updatecom1(d1);
+updateinfo1(d1);
 main_process();
 
 } else {
@@ -602,7 +603,7 @@ function alignWindows2() {
     if (!count) return;
 
     let screenWidth = window.innerWidth;
-    let winHeight = 720; // Твоя высота
+    let winHeight = 620; // Твоя высота
 
     activeWins.forEach((id, index) => {
         let win = $$(id);
