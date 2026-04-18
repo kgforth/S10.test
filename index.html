@@ -499,16 +499,19 @@ updatecom1(d);
   case 1:
   d1=d;
    updatecom1(d1);
+   updateinfo1(d1);
    upd_process(d1);
     break;
   case 2:
   d2=d;
    updatecom2(d2);
+   updateinfo2(d2);
    upd_process(d2);
     break;
   case 3:
   d3=d;
    updatecom3(d3);
+   updateinfo3(d3);
    upd_process(d3);
     break;
   default:
@@ -590,6 +593,51 @@ function alignWindows() {
         win.setPosition(posX, 100);
     });
 }
+
+function alignWindows2() {
+    let winIds = ["info1", "info2", "info3"];
+    let activeWins = winIds.filter(id => $$(id) && $$(id).isVisible());
+    let count = activeWins.length;
+    
+    if (!count) return;
+
+    let screenWidth = window.innerWidth;
+    let winHeight = 720; // Твоя высота
+
+    activeWins.forEach((id, index) => {
+        let win = $$(id);
+        let winWidth, posX;
+
+        if (count === 1) {
+            // ПРАВИЛО 1: Одно окно — не более половины ширины, по центру
+            winWidth = Math.min(screenWidth / 2, 800); // Ограничим еще и максимумом на всякий
+            posX = (screenWidth - winWidth) / 2;
+        } 
+        else if (count === 2) {
+            // ПРАВИЛО 2: Два окна — отступы от краев по 30px
+            let margin = 30;
+            let gap = 8; // зазор между окнами
+            winWidth = (screenWidth - (margin * 2) - gap) / 2;
+            posX = margin + (index * (winWidth + gap));
+        } 
+        else if (count === 3) {
+            // ПРАВИЛО 3: Три окна — отступы от краев по 10px
+            let margin = 10;
+            let gap = 8; // зазор между окнами
+            winWidth = (screenWidth - (margin * 2) - (gap * 2)) / 3;
+            posX = margin + (index * (winWidth + gap));
+        }
+
+        // Применяем размеры
+        win.define("width", winWidth);
+        win.define("height", winHeight);
+        win.resize();
+
+        // Ставим в позицию (Y можно оставить фиксированным, например 100)
+        win.setPosition(posX, 120);
+    });
+}
+
 
 
 function checkVisibility(chartId, seriesIndex) {
@@ -1180,6 +1228,28 @@ $$("com3").getBody().setHTML(c2);
 
 }
 
+function updateinfo1(d) {
+
+$$("info_1").setValue("<span style='color:white; font-weight:500;'>=инфо= " + Valid_Atlet(d) + "</span>" );
+$$("info1").getBody().setHTML(hhinfo(d));
+
+}
+
+function updateinfo2(d) {
+
+$$("info_2").setValue("<span style='color:white; font-weight:500;'>=инфо= " + Valid_Atlet(d) + "</span>" );
+$$("info2").getBody().setHTML(hhinfo(d));
+
+}
+
+function updateinfo3(d) {
+
+$$("info_3").setValue("<span style='color:white; font-weight:500;'>=инфо= " + Valid_Atlet(d) + "</span>" );
+$$("info3").getBody().setHTML(hhinfo(d));
+
+}
+
+
 function cleacom1() {
 $$("com_1").setValue("Информация" );
 $$("com1").getBody().setHTML("undefined");
@@ -1195,6 +1265,22 @@ function cleacom3() {
 $$("com_3").setValue("Информация" );
 $$("com3").getBody().setHTML("undefined");
 }
+
+function cleainfo1() {
+$$("info_1").setValue("Информация" );
+$$("info1").getBody().setHTML("undefined");
+}
+
+function cleainfo2() {
+$$("info_2").setValue("Информация" );
+$$("info2").getBody().setHTML("undefined");
+}
+
+function cleainfo3() {
+$$("info_3").setValue("Информация" );
+$$("info3").getBody().setHTML("undefined");
+}
+
 
 
 function Valid_Ttype(d,r,t) {
@@ -2549,7 +2635,7 @@ dx=1;
 trind1=0; 
 extractId();
 updatecom1(d1);
-
+updateinfo1(d1);
 }
 
 function update_a2() {
@@ -2558,6 +2644,7 @@ dx=2;
 trind2=0; 
 extractId();
 updatecom2(d2);
+updateinfo2(d2);
 
 }
 
@@ -2567,7 +2654,7 @@ dx=3;
 trind3=0; 
 extractId();
 updatecom3(d3);
-
+updateinfo3(d3);
 }
 
 
@@ -2814,6 +2901,119 @@ on: {
 
 //$$("com1").show(); 
 
+info_1 = webix.ui({
+  view: "window",
+  css: "my_win_custom",
+  id: "info1",
+   // ГЛАВНЫЕ НАСТРОЙКИ ДЛЯ РАСТЯГИВАНИЯ:
+  resize: true,         // Позволяет тянуть за края и правый нижний угол
+  move: true,           // Позволяет таскать за заголовок
+  width: 700,           // Начальная ширина
+  height: 800,          // Начальная высота
+  minWidth: 250,        // Минимальная ширина при растяжке
+  minHeight: 150,       // Минимальная высота при растяжке
+  position: "center",
+  head: {
+    view: "toolbar",
+    cols: [
+      { view: "label", id: "info_1", label: "Информация" },
+      {}, 
+      { view: "icon", icon: "wxi-close", click: () => $$("info1").hide() }
+    ]
+  },
+  body: {
+    id: "body_1",
+    template: "#html#",
+    scroll: "y"          // ВКЛЮЧАЕМ СКРОЛЛ
+  },
+// В конфиге каждого окна
+on: {
+  onHide: function() {
+    // Вызываем перерасчет для оставшихся видимых окон
+    alignWindows2();
+  },
+  onShow: function() {
+    // И при открытии тоже вызываем
+    alignWindows2();
+  }
+}  
+});
+
+info_2 = webix.ui({
+  view: "window",
+  css: "my_win_custom",
+  id: "info2",
+   // ГЛАВНЫЕ НАСТРОЙКИ ДЛЯ РАСТЯГИВАНИЯ:
+  resize: true,         // Позволяет тянуть за края и правый нижний угол
+  move: true,           // Позволяет таскать за заголовок
+  width: 700,           // Начальная ширина
+  height: 800,          // Начальная высота
+  minWidth: 250,        // Минимальная ширина при растяжке
+  minHeight: 150,       // Минимальная высота при растяжке
+  position: "center",
+  head: {
+    view: "toolbar",
+    cols: [
+      { view: "label", id: "info_2", label: "Информация" },
+      {}, 
+      { view: "icon", icon: "wxi-close", click: () => $$("info2").hide() }
+    ]
+  },
+  body: {
+    id: "body_2",
+    template: "#html#",
+    scroll: "y"          // ВКЛЮЧАЕМ СКРОЛЛ
+  },
+// В конфиге каждого окна
+on: {
+  onHide: function() {
+    // Вызываем перерасчет для оставшихся видимых окон
+    alignWindows2();
+  },
+  onShow: function() {
+    // И при открытии тоже вызываем
+    alignWindows2();
+  }
+}  
+});
+
+info_3 = webix.ui({
+  view: "window",
+  css: "my_win_custom",
+  id: "info3",
+   // ГЛАВНЫЕ НАСТРОЙКИ ДЛЯ РАСТЯГИВАНИЯ:
+  resize: true,         // Позволяет тянуть за края и правый нижний угол
+  move: true,           // Позволяет таскать за заголовок
+  width: 700,           // Начальная ширина
+  height: 800,          // Начальная высота
+  minWidth: 250,        // Минимальная ширина при растяжке
+  minHeight: 150,       // Минимальная высота при растяжке
+  position: "center",
+  head: {
+    view: "toolbar",
+    cols: [
+      { view: "label", id: "info_3", label: "Информация" },
+      {}, 
+      { view: "icon", icon: "wxi-close", click: () => $$("info3").hide() }
+    ]
+  },
+  body: {
+    id: "body_3",
+    template: "#html#",
+    scroll: "y"          // ВКЛЮЧАЕМ СКРОЛЛ
+  },
+// В конфиге каждого окна
+on: {
+  onHide: function() {
+    // Вызываем перерасчет для оставшихся видимых окон
+    alignWindows2();
+  },
+  onShow: function() {
+    // И при открытии тоже вызываем
+    alignWindows2();
+  }
+}  
+});
 
 
 function updategra1(ind1,ind2,ind3) {
@@ -4334,7 +4534,7 @@ dtable = {
     { id: "param", header: "Параметр", width: 222 },
     // Остальные столбцы — это ваши серии
 //    { id: "s1", css: "cursor_pointer", header: "<span title='загрузить' style='color:#EC3774'><b>&nbsp;&nbsp;------o------&nbsp;&nbsp;&nbsp;&#10227;</b></span>", width: 166 
-	{ id: "s1", header: "<span class='custom-btn1' onclick='$$(`com1`).show();' tabindex='0' role='button'>&#10063;</span><span style='color:#EC3774'><b>&nbsp;&nbsp;------o------&nbsp;&nbsp;</b></span><span class='custom-btn1' onclick='update_a1();' tabindex='0' role='button'>&#10227;</span>", width: 166 
+	{ id: "s1", header: "<span class='custom-btn1' onclick='$$(`com1`).show();' tabindex='0' role='button'>&#10063;</span><span class='custom-btn1' onclick='$$(`info1`).show();' tabindex='0' role='button'>i</span><span style='color:#EC3774'><b>&nbsp;&nbsp;------o------&nbsp;&nbsp;</b></span><span class='custom-btn1' onclick='update_a1();' tabindex='0' role='button'>&#10227;</span>", width: 166 
 
 	, 
 	      template: function(obj) {
@@ -4371,7 +4571,7 @@ if ( ind1 === "" ) {return obj.s1;}
 	
 	},
 //    { id: "s2", css: "cursor_pointer", header: "<span title='загрузить' style='color:#00ccff'><b>&nbsp;&nbsp;------o------&nbsp;&nbsp;&nbsp;&#10227;</b></span>", width: 168 
-	{ id: "s2", header: "<span class='custom-btn2' onclick='$$(`com2`).show();' tabindex='0' role='button'>&#10063;</span><span style='color:#00ccff'><b>&nbsp;&nbsp;------o------&nbsp;&nbsp;</b></span><span class='custom-btn2' onclick='update_a2();' tabindex='0' role='button'>&#10227;</span>", width: 168 
+	{ id: "s2", header: "<span class='custom-btn2' onclick='$$(`com2`).show();' tabindex='0' role='button'>&#10063;</span><span class='custom-btn2' onclick='$$(`info2`).show();' tabindex='0' role='button'>i</span><span style='color:#00ccff'><b>&nbsp;&nbsp;------o------&nbsp;&nbsp;</b></span><span class='custom-btn2' onclick='update_a2();' tabindex='0' role='button'>&#10227;</span>", width: 168 
 
     , 
 	      template: function(obj) {
@@ -4404,7 +4604,7 @@ if ( ind2 === "" ) {return obj.s2;}
 
 //<span class="custom-btn" tabindex="0" role="button">Кнопка</span>
 
-	{ id: "s3", header: "<span class='custom-btn3' onclick='$$(`com3`).show();' tabindex='0' role='button'>&#10063;</span><span style='color:#008A45'><b>&nbsp;&nbsp;------o------&nbsp;&nbsp;</b></span><span class='custom-btn3' onclick='update_a3();' tabindex='0' role='button'>&#10227;</span>", width: 154 
+	{ id: "s3", header: "<span class='custom-btn3' onclick='$$(`com3`).show();' tabindex='0' role='button'>&#10063;</span><span class='custom-btn3' onclick='$$(`info3`).show();' tabindex='0' role='button'>i</span><span style='color:#008A45'><b>&nbsp;&nbsp;------o------&nbsp;&nbsp;</b></span><span class='custom-btn3' onclick='update_a3();' tabindex='0' role='button'>&#10227;</span>", width: 154 
 // dx=3; trind3=0; extractId();
 	    , 
 	      template: function(obj) {
@@ -4859,7 +5059,8 @@ updategra1(ind1,ind2,ind3);
 updategra2(ind1,ind2,ind3);
 updategra3(ind1,ind2,ind3);
 updategra4(ind1,ind2,ind3);
-cleacom3()
+cleacom3();
+cleainfo3();
 
 return;
 
